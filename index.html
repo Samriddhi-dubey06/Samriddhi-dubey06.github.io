@@ -1,0 +1,3041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samriddhi Dubey | Engineer • Researcher • Spiritual Seeker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        :root {
+            --primary: #0071e3;
+            --primary-dark: #0051a3;
+            --dark: #000000;
+            --light: #f5f5f7;
+            --gray: #86868b;
+            --card: #1d1d1f;
+            --accent: #ff375f;
+            --section-padding: 120px 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--light);
+            line-height: 1.5;
+            background-color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.5;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+        
+        .header {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: all 0.4s ease;
+        }
+        
+        .header.scrolled {
+            padding: 1rem 0;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--light);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            position: relative; /* Required for dropdown positioning */
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            min-width: 200px;
+            border-radius: 10px;
+            padding: 0.8rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform-origin: top center;
+            transform: translateX(-50%) translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            z-index: 100;
+            margin-top: 10px;
+        }
+        
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: rgba(0, 0, 0, 0.95);
+            transform: rotate(45deg);
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            color: var(--light);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-menu a::after {
+            display: none; /* Remove underline effect from dropdown items */
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 113, 227, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+        }
+        
+        .profile-content {
+            text-align: left;
+        }
+        
+        .profile-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-pic-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+        
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            transition: all 0.5s ease;
+            filter: grayscale(20%);
+        }
+        
+        .profile-pic:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 113, 227, 0.5);
+        }
+        
+        .profile-pic-container::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            opacity: 0.5;
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+        
+        .profile-pic-container:hover::before {
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            opacity: 0.8;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            opacity: 0.1;
+            filter: blur(10px);
+        }
+        
+        .shape-1 {
+            width: 150px;
+            height: 150px;
+            top: -30px;
+            right: -30px;
+        }
+        
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            bottom: 40px;
+            left: -20px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #0071e3, #00c7ff, #ff375f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .subtitle span {
+            margin: 0 10px;
+            color: var(--accent);
+        }
+        
+        p.bio {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-dark);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 113, 227, 0.3);
+        }
+        
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid var(--gray);
+            color: var(--light);
+        }
+        
+        .btn.secondary::before {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn.secondary:hover {
+            border-color: var(--light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-link {
+            color: var(--gray);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+        
+        .scroll-arrow {
+            margin-top: 8px;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        .intro-section {
+            padding: var(--section-padding);
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom right, rgba(255, 55, 95, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+        }
+        
+        .intro-container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(29, 29, 31, 0.5);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .intro-container p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .intro-container p:first-of-type::first-letter {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .namaste {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .profile-content {
+                text-align: center;
+                order: 2;
+            }
+            
+            .profile-image {
+                order: 1;
+            }
+            
+            .btn-container {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .intro-container {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.5s ease;
+                z-index: 101;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 102;
+            }
+            
+            .profile-pic-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <style>
+        /* Enhanced Hierarchical Dropdown Menu Styling */
+        .dropdown-menu.hierarchical {
+            width: 350px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-section {
+            position: relative;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .dropdown-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        
+        /* Different colors for each section */
+        .dropdown-section:nth-child(1) .dropdown-heading {
+            background: linear-gradient(135deg, #0071e3, #0051a3);
+            box-shadow: 0 5px 15px rgba(0, 113, 227, 0.3);
+        }
+        
+        .dropdown-section:nth-child(2) .dropdown-heading {
+            background: linear-gradient(135deg, #ff375f, #ff7676);
+            box-shadow: 0 5px 15px rgba(255, 55, 95, 0.3);
+        }
+        
+        .dropdown-section:nth-child(3) .dropdown-heading {
+            background: linear-gradient(135deg, #00c16e, #00a155);
+            box-shadow: 0 5px 15px rgba(0, 193, 110, 0.3);
+        }
+        
+        .dropdown-heading i {
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        
+        /* Flowchart-like connections */
+        .dropdown-menu.hierarchical a {
+            position: relative;
+            display: block;
+            padding: 10px 15px 10px 35px;
+            margin-left: 15px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--light);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-menu.hierarchical a:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-menu.hierarchical a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -15px;
+            width: 15px;
+            height: 50%;
+            border-bottom-left-radius: 10px;
+            border-left: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dropdown-menu.hierarchical a::after {
+            content: '•';
+            position: absolute;
+            left: 15px;
+            color: inherit;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        
+        /* Different colors for links in each section */
+        .dropdown-section:nth-child(1) a {
+            color: #5aafff;
+        }
+        
+        .dropdown-section:nth-child(1) a::after {
+            color: #0071e3;
+        }
+        
+        .dropdown-section:nth-child(2) a {
+            color: #ff8fa3;
+        }
+        
+        .dropdown-section:nth-child(2) a::after {
+            color: #ff375f;
+        }
+        
+        .dropdown-section:nth-child(3) a {
+            color: #5ddbaa;
+        }
+        
+        .dropdown-section:nth-child(3) a::after {
+            color: #00c16e;
+        }
+        
+        /* Hover effects */
+        .dropdown-menu.hierarchical a:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-section:nth-child(1) a:hover {
+            box-shadow: 0 5px 15px rgba(0, 113, 227, 0.2);
+        }
+        
+        .dropdown-section:nth-child(2) a:hover {
+            box-shadow: 0 5px 15px rgba(255, 55, 95, 0.2);
+        }
+        
+        .dropdown-section:nth-child(3) a:hover {
+            box-shadow: 0 5px 15px rgba(0, 193, 110, 0.2);
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .dropdown-menu.hierarchical {
+                width: 100%;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                padding: 10px 0;
+            }
+            
+            .dropdown-section {
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+            }
+            
+            .dropdown-heading {
+                justify-content: center;
+            }
+            
+            .dropdown-menu.hierarchical a {
+                margin-left: 0;
+                text-align: center;
+                padding-left: 15px;
+            }
+            
+            .dropdown-menu.hierarchical a::before,
+            .dropdown-menu.hierarchical a::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Samriddhi Dubey</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <div class="nav-item">
+                    <a href="#about">About</a>
+                    <div class="dropdown-menu">
+                        <a href="#about-me">About Me</a>
+                        <a href="#achievements">My Achievements</a>
+                    </div>
+                </div>
+                
+                <a href="#spirituality">Spirituality</a>
+                <div class="nav-item">
+                    <a href="#projects">Projects</a>
+                    <div class="dropdown-menu hierarchical">
+                        <div class="dropdown-section">
+                            <h6 class="dropdown-heading"><i class="fas fa-graduation-cap"></i>BTech Projects</h6>
+                            <a href="#btech-projects">Axial Piston Pump Analysis</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h6 class="dropdown-heading"><i class="fas fa-laptop-code"></i>MTech Semester Projects</h6>
+                            <a href="#spac-r-project">SPAC-R: Suction-Driven Paper Assembly</a>
+                            <a href="#inverted-pendulum">Inverted Pendulum Control</a>
+                            <a href="#limb-impedance">Limb Impedance in Human Tasks</a>
+                            <a href="#overhead-press">Overhead Press Simulation</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h6 class="dropdown-heading"><i class="fas fa-robot"></i>Robotics Research</h6>
+                            <a href="robotics-lab.html">IITGN Robotics Lab</a>
+                            <a href="#robotics-research">Current Research Projects</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#contact">Contact</a>
+                    <div class="dropdown-menu contact-dropdown">
+                        <a href="https://github.com/Samriddhi-dubey06" target="_blank" class="contact-dropdown-item">
+                            <div class="contact-icon github">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/samriddhi-dubey-b8ab11236/" target="_blank" class="contact-dropdown-item">
+                            <div class="contact-icon linkedin">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <span>LinkedIn</span>
+                        </a>
+                        <div class="contact-dropdown-item">
+                            <div class="contact-icon email">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="copyable-email" id="nav-personal-email">dsamriddhi1@gmail.com</span>
+                            <button class="copy-btn" onclick="copyEmail('nav-personal-email')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="contact-dropdown-item">
+                            <div class="contact-icon email-alt">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="copyable-email" id="nav-academic-email">24250080@iitgn.ac.in</span>
+                            <button class="copy-btn" onclick="copyEmail('nav-academic-email')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="profile-section">
+            <div class="profile-content" data-aos="fade-right" data-aos-duration="1000">
+                <h1>Samriddhi Dubey</h1>
+                <div class="subtitle">
+                    <span class="highlight-badge">Engineer</span>
+                    <span class="separator">•</span>
+                    <span>Roboticist</span>
+                    <span class="separator">•</span>
+                    <span>Spiritual Seeker</span>
+                </div>
+                <p class="bio">Exploring the intersection of robotics, technology, and spiritual wisdom. Currently pursuing post-graduation at IIT Gandhinagar with a focus on manipulation and grasping in robotics.</p>
+                
+                <div class="credentials">
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="credential-text">
+                            Gold Medalist, Mechanical Engineering (JEC)
+                        </div>
+                    </div>
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="credential-text">
+                            M.Tech Researcher, IIT Gandhinagar
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <div class="nav-item">
+                        <a href="#" class="btn secondary">Connect With Me</a>
+                        <div class="dropdown-menu connect-dropdown">
+                            <div class="connect-grid">
+                                <div class="connect-column">
+                                    <a href="https://github.com/Samriddhi-dubey06" target="_blank" class="social-link">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                    <div class="email-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span class="copyable-email" id="personal-email">dsamriddhi1@gmail.com</span>
+                                        <button class="copy-btn" onclick="copyEmail('personal-email')">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="connect-column">
+                                    <a href="https://www.linkedin.com/in/samriddhi-dubey-b8ab11236/" target="_blank" class="social-link">
+                                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                                    </a>
+                                    <div class="email-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span class="copyable-email" id="academic-email">24250080@iitgn.ac.in</span>
+                                        <button class="copy-btn" onclick="copyEmail('academic-email')">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    /* Two-column dropdown styling */
+                    .dropdown-menu.connect-dropdown {
+                        width: 500px;
+                        padding: 15px;
+                    }
+                    
+                    .connect-grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 10px;
+                    }
+                    
+                    .connect-column {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                    
+                    .social-link {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 15px;
+                        color: var(--light);
+                        text-decoration: none;
+                        transition: background-color 0.3s ease;
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 5px;
+                    }
+                    
+                    .social-link:hover {
+                        background-color: rgba(255, 255, 255, 0.1);
+                    }
+                    
+                    .social-link i {
+                        margin-right: 10px;
+                        color: var(--primary);
+                    }
+                    
+                    /* Copyable email styling */
+                    .email-item {
+                        display: flex;
+                        align-items: center;
+                        padding: 10px 15px;
+                        color: var(--light);
+                        transition: background-color 0.3s ease;
+                        background: rgba(255, 255, 255, 0.05);
+                        border-radius: 5px;
+                    }
+                    
+                    .email-item:hover {
+                        background-color: rgba(255, 255, 255, 0.1);
+                    }
+                    
+                    .email-item i {
+                        margin-right: 10px;
+                        color: var(--primary);
+                        flex-shrink: 0;
+                    }
+                    
+                    .copyable-email {
+                        flex-grow: 1;
+                        user-select: all;
+                        cursor: text;
+                        font-size: 0.9rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    
+                    .copy-btn {
+                        background: none;
+                        border: none;
+                        color: var(--gray);
+                        cursor: pointer;
+                        padding: 5px;
+                        transition: color 0.3s ease;
+                        flex-shrink: 0;
+                    }
+                    
+                    .copy-btn:hover {
+                        color: var(--primary);
+                    }
+                    
+                    /* Responsive adjustments */
+                    @media (max-width: 768px) {
+                        .dropdown-menu.connect-dropdown {
+                            width: 90vw;
+                            max-width: 500px;
+                        }
+                    }
+                    
+                    @media (max-width: 480px) {
+                        .connect-grid {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                </style>
+
+                <script>
+                    // Add this to your existing JavaScript
+                    function copyEmail(elementId) {
+                        const emailElement = document.getElementById(elementId);
+                        const emailText = emailElement.textContent;
+                        
+                        navigator.clipboard.writeText(emailText).then(() => {
+                            // Visual feedback on successful copy
+                            const copyBtn = emailElement.nextElementSibling;
+                            const originalIcon = copyBtn.innerHTML;
+                            
+                            copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                            copyBtn.style.color = '#00c16e';
+                            
+                            setTimeout(() => {
+                                copyBtn.innerHTML = originalIcon;
+                                copyBtn.style.color = '';
+                            }, 2000);
+                        });
+                    }
+                </script>
+                
+        
+            </div>
+            
+            <div class="profile-image">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                </div>
+                <div class="profile-pic-container">
+                    <img src="/home/samriddhi/Downloads/samriddhi.jpg" alt="Samriddhi Dubey" class="profile-pic">
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="intro-section">
+        <div class="container">
+            <!-- About Me Section -->
+            <div id="about-me" class="intro-container" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">About Me</h2>
+                
+                <p>Welcome to my website — a place where technology meets tradition. I'm Samriddhi Dubey, a passionate explorer in the world of robotics from Deori, a serene town in the Sagar district of Madhya Pradesh.</p>
+                
+                <p>I come from Deori, a serene town in the Sagar district of Madhya Pradesh, and completed my schooling at Noble Public School. I earned my B.Tech from Jabalpur Engineering College as the <strong>Gold Medalist in Mechanical Engineering</strong>, and under an exchange program, completed my final semester at IIT Indore, which further deepened my curiosity and commitment toward advanced robotics research.</p>
+                
+                <p>During my undergraduate studies, I developed expertise in mechanical systems analysis, particularly focusing on axial piston pumps and fault diagnosis. I worked extensively with MATLAB Simulink to create simulation models for analyzing leakage faults and pressure fluctuations in hydraulic systems. With time, my interest gradually shifted toward robotics, which became my primary focus for advanced studies.</p>
+                
+                <p>My primary research interest now lies in manipulation and grasping, where I am currently working on implementing object impedance and object admittance controllers to enhance robotic interaction with unstructured environments.</p>
+                
+                <p>Beyond the circuits and code, I have a profound interest in spiritual knowledge, drawing immense inspiration from the Bhagavad Gita, Shrimad Bhagavatam, and other timeless Indian scriptures.</p>
+                
+                <p>This website is a reflection of both my technical journey and spiritual inclinations. Whether you're here to explore robotics, read about my projects, or connect over shared interests — I'm grateful you stopped by.</p>
+            </div>
+            
+            <!-- My Achievements Section - Styled like SPAC-R section -->
+            <div id="achievements" class="achievements-container" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">My Achievement Journey</h2>
+                
+                <div class="project-card enhanced">
+                    <div class="project-header">
+                        <h4 class="project-title">Academic & Professional Milestones</h4>
+                        <div class="project-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2015-Present</span>
+                            <span><i class="fas fa-user"></i> Samriddhi Dubey</span>
+                            <span><i class="fas fa-university"></i> IIT Gandhinagar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <div class="project-highlight-box">
+                            <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="highlight-content">
+                                <h5>Key Achievement</h5>
+                                <p>Gold Medalist in Mechanical Engineering from Jabalpur Engineering College, with a journey spanning from academic excellence to advanced robotics research.</p>
+                            </div>
+                        </div>
+                        
+                        <p>My academic journey has been marked by continuous growth and achievement, from early recognition as a top student to specialized research in robotics at premier institutions.</p>
+                        
+                        <!-- Centered images with reduced size - just like SPAC-R section -->
+                        <!-- <div class="centered-content">
+                            <img src="/home/samriddhi/Downloads/Web_Photo_Editor(1).jpg" alt="My Achievements" class="centered-small-image">
+                        </div>
+                        
+                        <div class="centered-content">
+                            <img src="/home/samriddhi/Downloads/web1.jpg" alt="My Achievements" class="centered-small-image">
+                        </div> -->
+
+                        <div class="project-images">
+                            <div class="image-collage image-collage-2">
+                                <div class="project-image" data-aos="fade-up" data-aos-delay="50">
+                                    <img src="images/web1.jpg" alt="Samriddhi Dubey" class="profile-pic">
+                                </div>
+                                <div class="project-image" data-aos="fade-up" data-aos-delay="100">
+                                    <img src="images/Web_Photo_Editor(1).jpg" alt="My Achievements">
+                                    <div class="image-caption">My Achievements</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="methodology-section">
+                            <h5><i class="fas fa-cogs"></i> Achievement Timeline</h5>
+                            <div class="methodology-content">
+                                <p>My journey from school to advanced research has been shaped by key milestones that reflect my commitment to excellence in engineering and robotics.</p>
+                                
+                                <div class="methodology-steps">
+                                    <div class="step">
+                                        <div class="step-number">01</div>
+                                        <div class="step-content">
+                                            <h6>Best Student Award (2015)</h6>
+                                            <p>Recognized for academic excellence and leadership qualities</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="step">
+                                        <div class="step-number">02</div>
+                                        <div class="step-content">
+                                            <h6>National Player in throwball (2018)</h6>
+                                            <p>Played nationals in throwball in clsas 10</p>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-number">03</div>
+                                        <div class="step-content">
+                                            <h6>Jabalpur Engineering College (2020)</h6>
+                                            <p>Began B.Tech in Mechanical Engineering with focus on system dynamics</p>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-number">04</div>
+                                        <div class="step-content">
+                                            <h6>IIT Indore Exchange (2023)</h6>
+                                            <p>Completed final semester under exchange program, expanding research horizons</p>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-number">05</div>
+                                        <div class="step-content">
+                                            <h6>Gold Medalist (2024)</h6>
+                                            <p>Graduated as Gold Medalist in Mechanical Engineering</p>
+                                        </div>
+                                    </div>
+                                    <div class="step">
+                                        <div class="step-number">06</div>
+                                        <div class="step-content">
+                                            <h6>IIT Gandhinagar Research (2024-Present)</h6>
+                                            <p>Pursuing advanced research in robotics with focus on manipulation and grasping</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="conclusion-section">
+                            <h5><i class="fas fa-flag-checkered"></i> Future Directions</h5>
+                            <p>Building on my academic achievements and research experience, I aim to contribute to the field of robotics through innovative solutions for real-world challenges, particularly in manipulation and grasping technologies that can enhance human-robot interaction and industrial automation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skip directly to projects section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Projects</h2>
+            
+            <div class="projects-container">
+                <div class="project-category" id="btech-projects" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">BTech Projects</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Analyzing the Impact of Increasing Leakage Fault in Single and Multiple Cylinders and Pressure Fluctuation Reduction via Piston Rearrangement in an Axial Piston Pump</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                                <span><i class="fas fa-user"></i> Prof. Pavan Kumar Kankar</span>
+                                <span><i class="fas fa-university"></i> IIT Indore</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-lightbulb"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Discovered that uniform piston arrangement produces the least pressure fluctuation in faulty systems, providing a novel approach to fault management in axial piston pumps.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project was carried out during my final year of BTech at IIT Indore under the guidance of Prof. Pavan Kumar Kankar in the Department of Mechanical Engineering. It focuses on the detailed analysis of failure modes in axial piston pumps (APPs), which are commonly used in industrial systems, automotive applications, and manufacturing setups. Despite their efficiency, these pumps face significant performance challenges due to internal leakage and pressure instability.</p>
+                            
+                            <div class="project-actions">
+                                <a href="images/Final BTP Report Samriddhi.pdf" class="btn secondary" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> View Full Project Report
+                                </a>
+                            </div>
+                            
+                            <div class="project-images">
+                                <div class="image-collage image-collage-2">
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="50">
+                                        <img src="images/leakage.jpg" alt="Leakage flow rate">
+                                        <div class="image-caption">Leakage flow rate</div>
+                                    </div>
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="100">
+                                        <img src="images/outlet_pressure.jpg" alt="Outlet Pressure">
+                                        <div class="image-caption">Outlet Pressure</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Methodology</h5>
+                                <div class="methodology-content">
+                                    <p>The core of the work involved developing a simulation model using the SIMSCAPE environment in MATLAB Simulink. A closed-loop variable displacement axial piston pump was modeled, accounting for the clearance between the piston and the cylinder block.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Simulation Development</h6>
+                                                <p>Created a detailed model in MATLAB Simulink with variable clearance parameters</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Fault Analysis</h6>
+                                                <p>Simulated leakage faults by varying annular clearance from 1µm to 100µm</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Validation</h6>
+                                                <p>Compared results with experimental data from a Vickers PVB5 pump</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Piston Arrangement Study</h6>
+                                                <p>Analyzed inline, random, and uniform configurations for optimal performance</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Findings</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Fault Progression</h6>
+                                            <p>Identified three distinct stages of degradation in pressure signals as leakage severity increases</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-sort-amount-down"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Performance Impact</h6>
+                                            <p>Increasing leakage reduced flow rate and disturbed outlet pressure with measurable patterns</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-th"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Optimal Configuration</h6>
+                                            <p>Uniform piston arrangement produced the least pressure fluctuation in faulty systems</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="project-images">
+                                <div class="image-collage image-collage-3">
+                                    <div class="project-image" data-aos="fade-up">
+                                        <img src="images/inline.jpg" alt="Piston Inline Arrangements">
+                                        <div class="image-caption">Piston Inline Arrangements</div>
+                                    </div>
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="50">
+                                        <img src="images/random.jpg" alt="Piston Random Arrangements">
+                                        <div class="image-caption">Piston Random Arrangements</div>
+                                    </div>
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="100">
+                                        <img src="images/uniform.jpg" alt="Piston Uniform Arrangements">
+                                        <div class="image-caption">Piston Uniform Arrangements</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Conclusion & Impact</h5>
+                                <p>This research contributes valuable insights into optimizing the performance, reliability, and maintenance of axial piston pumps in practical settings. The findings on piston arrangement strategies provide a novel approach to managing pressure fluctuations in systems with leakage faults, potentially extending equipment life and reducing maintenance costs in industrial applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-category" id="spac-r-project" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">SPAC-R: Suction-Driven Paper Assembly and Crafting Robot</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">SPAC-R: Suction-Driven Paper Assembly and Crafting Robot</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> MTech,1st semester</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Delta Robot</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>A delta robot with suction-based end effector designed for precise paper manipulation and assembly tasks, enabling automated crafting and paper-based construction.</p>
+                                </div>
+                            </div>
+                            
+                            <p>I completed this project during my 1st semester's Mechatronics course at IIT Gandhinagar under the supervision of Prof. Madhu Vadali. SPAC-R is a specialized delta robot designed for precise paper manipulation and assembly. The robot utilizes a suction-based end effector to pick, place, and manipulate paper components with high precision, enabling automated crafting and paper-based construction tasks.</p>
+                            
+                            <div class="project-actions">
+                                <a href="https://github.com/Samriddhi-dubey06/SPAC-R-DELTA-BOT" class="btn primary" target="_blank">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                            
+                            <!-- Centered image with reduced size -->
+                            <div class="centered-content">
+                                <img src="images/delta_robot.jpg" alt="SPAC-R Delta Robot" class="centered-small-image">
+                            </div>
+                            
+                            
+                            <!-- YouTube video link -->
+                            <div class="centered-content">
+                                <h5><i class="fas fa-play-circle"></i> Project Demo</h5>
+                                <a href="https://youtu.be/Vu2pxAgjbDY?feature=shared" target="_blank" class="video-link">
+                                    <i class="fab fa-youtube"></i> Watch SPAC-R Demo on YouTube
+                                </a>
+                            </div>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Methodology</h5>
+                                <div class="methodology-content">
+                                    <p>The development of SPAC-R involved designing a delta robot architecture optimized for paper manipulation, with a focus on precision movement and gentle handling through suction-based gripping.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Mechanical Design</h6>
+                                                <p>Designed and 3D printed custom delta robot components optimized for paper handling</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Suction System</h6>
+                                                <p>Developed a vacuum-based end effector with pressure feedback for delicate paper manipulation</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Control System</h6>
+                                                <p>Implemented inverse kinematics algorithms on Arduino for precise positioning</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Software Interface</h6>
+                                                <p>Created a Python-based control interface for path planning and operation</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Features</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-bullseye"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Precision Control</h6>
+                                            <p>Achieves sub-millimeter positioning accuracy for detailed paper assembly tasks</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-wind"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Adaptive Suction</h6>
+                                            <p>Variable suction strength adjusts automatically to different paper weights and textures</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>High Speed Operation</h6>
+                                            <p>Capable of performing up to 60 pick-and-place operations per minute</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>SPAC-R demonstrates significant potential for automating paper-based crafting and assembly tasks in educational settings, artistic applications, and small-scale manufacturing. The project contributes to the field of soft robotics by showcasing effective techniques for handling delicate materials with precision and care, while maintaining the speed advantages of delta robot architectures.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-category" id="inverted-pendulum" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Inverted Pendulum: Control and State Estimation</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Inverted Pendulum: Control and State Estimation</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> MTech, 2nd semester</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Control Systems</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-balance-scale"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>A dual-mode control strategy combining energy-based swing-up control with LQR stabilization, enhanced with state observers for robust performance in noisy environments.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project presents a control strategy for an inverted pendulum on a cart, tackling the challenge of its inherent instability. The approach employs a dual-mode control system, combining an energy-based swing-up controller to bring the pendulum upright and a Linear Quadratic Regulator (LQR) for fine stabilization once it's near the desired vertical position.</p>
+                            
+                            <div class="project-actions">
+                                <a href="images/Final MCT project.pdf" class="btn primary" target="_blank">
+                                    <i class="fab fa-github"></i> View Project Report
+                                </a>
+                            </div>
+                            
+                           
+
+                            <!-- Add video demonstration -->
+                            <div class="centered-content">
+                                <h5><i class="fas fa-play-circle"></i> Simulation Demo</h5>
+                                <div class="project-video-container">
+                                    <video src="images/inverted_pendulum_animation.mp4" controls class="project-video">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="video-caption">Inverted Pendulum Balancing Animation</div>
+                                </div>
+                            </div>
+
+                            <style>
+                                .project-video-container {
+                                    position: relative;
+                                    width: 100%;
+                                    max-width: 600px;
+                                    margin: 1.5rem auto;
+                                    border-radius: 12px;
+                                    overflow: hidden;
+                                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                                    border: 1px solid rgba(255, 255, 255, 0.1);
+                                }
+                                
+                                .project-video {
+                                    width: 100%;
+                                    display: block;
+                                    border-radius: 10px;
+                                }
+                                
+                                .video-caption {
+                                    position: absolute;
+                                    bottom: 0;
+                                    left: 0;
+                                    right: 0;
+                                    background: rgba(0, 0, 0, 0.7);
+                                    color: var(--light);
+                                    padding: 8px 12px;
+                                    font-size: 0.85rem;
+                                    text-align: center;
+                                    opacity: 0;
+                                    transition: opacity 0.3s ease;
+                                }
+                                
+                                .project-video-container:hover .video-caption {
+                                    opacity: 1;
+                                }
+                            </style>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Methodology</h5>
+                                <div class="methodology-content">
+                                    <p>The project involved developing a comprehensive control and state estimation strategy for the inverted pendulum system, addressing both the control challenges and real-world sensor limitations.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>System Modeling</h6>
+                                                <p>Derived nonlinear equations using Lagrangian mechanics and linearized around the upright position</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Dual-Mode Control</h6>
+                                                <p>Implemented energy-based swing-up control and LQR stabilization with smooth transition</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>State Observers</h6>
+                                                <p>Designed Luenberger observer and Kalman filter for state estimation from limited measurements</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Performance Analysis</h6>
+                                                <p>Conducted comparative analysis of observer performance under varying noise conditions</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Findings</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-robot"></i></div>
+                                        <div class="finding-content">
+                                            <h6>LQR Performance</h6>
+                                            <p>LQR gain matrix [185.16, 219.10, -7.81, 6.61] achieved optimal stabilization with minimal control effort</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-wave-square"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Energy Control</h6>
+                                            <p>Energy-based swing-up successfully brought pendulum from downward to near-upright position</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-filter"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Kalman Superiority</h6>
+                                            <p>Kalman filter consistently outperformed Luenberger observer with up to 40% lower RMS error in noisy conditions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This research demonstrates a robust approach to controlling inherently unstable systems with limited sensor information, applicable to various domains including robotics, aerospace, and industrial automation. The findings on observer-based control provide valuable insights for implementing control systems in real-world noisy environments, potentially improving the reliability and performance of unstable mechanical systems.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-category" id="limb-impedance" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Limb Impedance in Human Drilling and Screwing Tasks</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Limb Impedance in Human Drilling and Screwing Tasks</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> MTech, 2nd semester</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Human-Robot Interaction</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-hand-paper"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Quantitative analysis of how human arm impedance adapts during drilling and screwing tasks under known versus unknown force perturbations, providing insights for human-robot collaborative systems.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This academic project explores how human arm impedance adapts during drilling and screwing tasks when subjected to external force perturbations, comparing responses under known versus unknown perturbation conditions. By analyzing position and force data through a 2D second-order dynamic model, the study estimates mass, damping, and stiffness matrices for the arm.</p>
+                            
+                            <div class="project-actions">
+                                <a href="images/Final HRI project II.pdf" class="btn primary" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> View Project Report
+                                </a>
+                            </div>
+                            
+                            <!-- Centered image with reduced size -->
+                            <div class="centered-content">
+                                <img src="images/impedance_setup.jpg" alt="Experimental Setup" class="centered-small-image">
+                            </div>
+
+                            <!-- Add two images in a row -->
+                            <div class="project-images">
+                                <div class="image-collage image-collage-2">
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="50">
+                                        <img src="images/drill.jpg" alt="Drilling Task">
+                                        <div class="image-caption">Drilling Task</div>
+                                    </div>
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="100">
+                                        <img src="images/screw.jpg" alt="Screwing Task">
+                                        <div class="image-caption">Screwing Task</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add YouTube video demonstration -->
+                            <div class="centered-content">
+                                <h5><i class="fas fa-play-circle"></i> Project Demo</h5>
+                                <div class="youtube-container">
+                                    <a href="https://youtu.be/6ERPvmKCwXI" target="_blank" class="video-link">
+                                        <i class="fab fa-youtube"></i> Watch Limb Impedance Demo on YouTube
+                                    </a>
+                                </div>
+                            </div>
+
+                            <style>
+                                .youtube-container {
+                                    margin: 1.5rem auto;
+                                    text-align: center;
+                                }
+                                
+                                .video-link {
+                                    display: inline-block;
+                                    background: #ff0000;
+                                    color: white;
+                                    padding: 10px 20px;
+                                    border-radius: 30px;
+                                    text-decoration: none;
+                                    font-weight: 600;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-category" id="IITGN-Robotics-Lab" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">IITGN Robotics Lab</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">IITGN Robotics Research Laboratory</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-user"></i> Mechanical Engineering Department</span>
+                                <span><i class="fas fa-robot"></i> Robotics Research</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <p class="intro-text">I am fortunate to be part of the prestigious Robotics Lab at IIT Gandhinagar under the guidance of Professor Harish PM from the Mechanical Engineering department.</p>
+                            
+                            <div class="lab-grid">
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/robotics-lab1.jpg" alt="IITGN Robotics Lab">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>World-Class Research Environment</h5>
+                                        <p>Being part of the IITGN Robotics Lab has been an incredibly rewarding experience. The lab is equipped with state-of-the-art facilities and equipment that enable cutting-edge research in various domains of robotics. The environment is collaborative and supportive, with researchers working together as a team on innovative projects that push the boundaries of what's possible in robotics technology.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/prof-mentorship.jpg" alt="Professor Mentorship">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>Exceptional Mentorship</h5>
+                                        <p>The lab is co-managed by Professor Harish PM and Professor Madhu Vadali, creating a diverse research environment that spans multiple areas of robotics. Professor Harish focuses on manipulation and control systems, while Professor Madhu Vadali specializes in soft robotics. Their complementary expertise and supportive guidance have been instrumental in my growth as a researcher, providing me with a well-rounded understanding of robotics principles.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/addverb-visit.jpg" alt="Addverb Technologies Visit">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>Industry Collaboration</h5>
+                                        <p>My current project is being conducted in collaboration with Addverb Technologies, a leading robotics company specializing in warehouse automation. In December, I had the valuable opportunity to visit their facility, which provided practical insights into industrial applications of robotics research. This collaboration has enriched my understanding of how academic research can be translated into real-world solutions, bridging the gap between theory and practice.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/team-collaboration.jpg" alt="Team Collaboration">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>Teamwork and Growth</h5>
+                                        <p>The peaceful and supportive environment of the lab has been crucial for my academic and professional development. We work as a cohesive team, sharing ideas, providing feedback, and helping each other overcome challenges. This collaborative approach has not only enhanced my technical skills but also taught me the value of teamwork in advancing robotics research. The connections I've formed and the experiences I've gained in this lab will undoubtedly shape my future career in robotics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="intro-section">
+        <div class="container">
+            <!-- About Me Section -->
+            <div id="about-me" class="intro-container" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">About Me</h2>
+                
+                <p>Welcome to my website — a place where technology meets tradition. I'm Samriddhi Dubey, a passionate explorer in the world of robotics from Deori, a serene town in the Sagar district of Madhya Pradesh.</p>
+                
+                <p>I come from Deori, a serene town in the Sagar district of Madhya Pradesh, and completed my schooling at Noble Public School. I earned my B.Tech from Jabalpur Engineering College as the <strong>Gold Medalist in Mechanical Engineering</strong>, and under an exchange program, completed my final semester at IIT Indore, which further deepened my curiosity and commitment toward advanced robotics research.</p>
+                
+                <p>During my undergraduate studies, I developed expertise in mechanical systems analysis, particularly focusing on axial piston pumps and fault diagnosis. I worked extensively with MATLAB Simulink to create simulation models for analyzing leakage faults and pressure fluctuations in hydraulic systems. With time, my interest gradually shifted toward robotics, which became my primary focus for advanced studies.</p>
+                
+                <p>My primary research interest now lies in manipulation and grasping, where I am currently working on implementing object impedance and object admittance controllers to enhance robotic interaction with unstructured environments.</p>
+                
+                <p>Beyond the circuits and code, I have a profound interest in spiritual knowledge, drawing immense inspiration from the Bhagavad Gita, Shrimad Bhagavatam, and other timeless Indian scriptures.</p>
+                
+                <p>This website is a reflection of both my technical journey and spiritual inclinations. Whether you're here to explore robotics, read about my projects, or connect over shared interests — I'm grateful you stopped by.</p>
+            </div>
+            
+            <!-- My Achievements Section - Styled like SPAC-R section -->
+            <div id="achievements" class="achievements-container" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="section-title">My Achievement Journey</h2>
+                
+                <div class="project-card enhanced">
+                    <div class="project-header">
+                        <h4 class="project-title">Academic & Professional Milestones</h4>
+                        <div class="project-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2015-Present</span>
+                            <span><i class="fas fa-user"></i> Samriddhi Dubey</span>
+                           
+                                <span><i class="fas fa-map-marker-alt"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-user"></i> Mechanical Engineering Department</span>
+                                <span><i class="fas fa-robot"></i> Robotics Research</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <p class="intro-text">I am fortunate to be part of the prestigious Robotics Lab at IIT Gandhinagar under the guidance of Professor Harish PM from the Mechanical Engineering department.</p>
+                            
+                            <div class="lab-grid">
+                                <!-- First card -->
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/robotics-lab1.jpg" alt="IITGN Robotics Lab">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>World-Class Research Environment</h5>
+                                        <p>Being part of the IITGN Robotics Lab has been an incredibly rewarding experience. The lab is equipped with state-of-the-art facilities and equipment that enable cutting-edge research in various domains of robotics. The environment is collaborative and supportive, with researchers working together as a team on innovative projects that push the boundaries of what's possible in robotics technology.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Second card -->
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/prof-mentorship.jpg" alt="Professor Mentorship">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>Exceptional Mentorship</h5>
+                                        <p>The lab is co-managed by Professor Harish PM and Professor Madhu Vadali, creating a diverse research environment that spans multiple areas of robotics. Professor Harish focuses on manipulation and control systems, while Professor Madhu Vadali specializes in soft robotics. Their complementary expertise and supportive guidance have been instrumental in my growth as a researcher, providing me with a well-rounded understanding of robotics principles.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Third card -->
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/addverb-visit.jpg" alt="Addverb Technologies Visit">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>Industry Collaboration</h5>
+                                        <p>My current project is being conducted in collaboration with Addverb Technologies, a leading robotics company specializing in warehouse automation. In December, I had the valuable opportunity to visit their facility, which provided practical insights into industrial applications of robotics research. This collaboration has enriched my understanding of how academic research can be translated into real-world solutions, bridging the gap between theory and practice.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Fourth card -->
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/team-collaboration.jpg" alt="Team Collaboration">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>Teamwork and Growth</h5>
+                                        <p>The peaceful and supportive environment of the lab has been crucial for my academic and professional development. We work as a cohesive team, sharing ideas, providing feedback, and helping each other overcome challenges. This collaborative approach has not only enhanced my technical skills but also taught me the value of teamwork in advancing robotics research. The connections I've formed and the experiences I've gained in this lab will undoubtedly shape my future career in robotics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-category" id="IITGN-Robotics-Lab" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">IITGN Robotics Lab</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">IITGN Robotics Research Laboratory</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-user"></i> Mechanical Engineering Department</span>
+                                <span><i class="fas fa-robot"></i> Robotics Research</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <p class="intro-text">I am fortunate to be part of the prestigious Robotics Lab at IIT Gandhinagar under the guidance of Professor Harish PM from the Mechanical Engineering department.</p>
+                            
+                            <div class="lab-grid">
+                                <!-- First card -->
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/robotics-lab1.jpg" alt="IITGN Robotics Lab">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>World-Class Research Environment</h5>
+                                        <p>Being part of the IITGN Robotics Lab has been an incredibly rewarding experience. The lab is equipped with state-of-the-art facilities and equipment that enable cutting-edge research in various domains of robotics. The environment is collaborative and supportive, with researchers working together as a team on innovative projects that push the boundaries of what's possible in robotics technology.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Second card -->
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/prof-mentorship.jpg" alt="Professor Mentorship">
+                                    </div>
+                                    <div class="lab-text">
+                                        <h5>Exceptional Mentorship</h5>
+                                        <p>The lab is co-managed by Professor Harish PM and Professor Madhu Vadali, creating a diverse research environment that spans multiple areas of robotics. Professor Harish focuses on manipulation and control systems, while Professor Madhu Vadali specializes in soft robotics. Their complementary expertise and supportive guidance have been instrumental in my growth as a researcher, providing me with a well-rounded understanding of robotics principles.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Third card -->
+                                <div class="lab-item">
+                                    <div class="lab-image">
+                                        <img src="images/addverb-visit.jpg" alt="
+                                    transition: all 0.3s ease;
+                                    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+                                }
+                                
+                                .video-link:hover {
+                                    background: #cc0000;
+                                    transform: translateY(-3px);
+                                    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+                                }
+                                
+                                .video-link i {
+                                    margin-right: 8px;
+                                }
+                            </style>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Methodology</h5>
+                                <div class="methodology-content">
+                                    <p>The project involved a carefully designed experimental setup to measure and analyze human arm impedance during common manual tasks under different perturbation conditions.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Experimental Setup</h6>
+                                                <p>Subject's wrist fixed to table with five strings attached to hand, routed through pulleys with weights</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Task Performance</h6>
+                                                <p>Subject performed drilling and screwing tasks while maintaining tool position despite perturbations</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Data Collection</h6>
+                                                <p>Vicon motion capture system recorded 3D position data of wrist and pulleys across 21 trials</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Impedance Estimation</h6>
+                                                <p>Arm modeled as 2D second-order system with least squares regression to estimate parameters</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Findings</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-arrows-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Stiffness Adaptation</h6>
+                                            <p>Known force conditions resulted in higher, more targeted stiffness along the primary task axis (1.3x higher for drilling, 24% higher for screwing)</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Damping Differences</h6>
+                                            <p>Dramatic differences in damping, with known force condition showing up to 152x higher damping in the primary screwing axis</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-bullseye"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Stiffness Ellipses</h6>
+                                            <p>Known force ellipses were larger and more directionally aligned with task axis, while unknown force ellipses were more circular</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This research provides valuable insights for designing more intuitive and adaptive human-robot interaction systems. Understanding how humans naturally modulate arm impedance based on force knowledge can inform the development of collaborative robots that better complement human motor control strategies. The findings suggest that providing force feedback in robotic systems could significantly enhance task performance and stability, particularly for precision tasks requiring directional specificity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-category" id="overhead-press" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Overhead Press Simulation and Analysis</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Overhead Press Simulation and Analysis</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> MTech, 2nd semester</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Human-Robot Interaction</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-dumbbell"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Comprehensive biomechanical analysis of the overhead press exercise using musculoskeletal modeling to estimate joint kinematics, muscle forces, and joint torques for applications in rehabilitation, sports science, and human-robot interaction.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project focuses on simulating and analyzing the biomechanics of a human overhead press exercise using musculoskeletal modeling tools. Understanding human movement biomechanics is crucial for various fields, including rehabilitation, sports science, ergonomics, and human-robot interaction. The study utilized OpenSim, a powerful software tool for simulating, analyzing, and visualizing internal dynamics such as joint kinematics, muscle forces, and joint torques, which are typically difficult to measure non-invasively.</p>
+                            
+                            <div class="project-actions">
+                                <a href="images/Project_1.pdf" class="btn primary" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> View Project Report
+                                </a>
+                            </div>
+                            
+                           
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Methodology</h5>
+                                <div class="methodology-content">
+                                    <p>The project employed a comprehensive approach to analyze the biomechanics of the overhead press using motion capture data and musculoskeletal modeling.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Model Selection</h6>
+                                                <p>Used MobL_ARMS model with 7 degrees of freedom and muscle-tendon actuators</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Data Collection</h6>
+                                                <p>Captured motion using Vicon Nexus system with 10 reflective markers</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Inverse Analyses</h6>
+                                                <p>Performed Inverse Kinematics and Inverse Dynamics to calculate joint angles and forces</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Muscle Force Estimation</h6>
+                                                <p>Used Static Optimization to estimate individual muscle forces</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Findings</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-angle-double-up"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Deltoid Muscles</h6>
+                                            <p>DELT1 (anterior) showed a large initial peak (~750 N) for initiating the lift and a second increase (~350 N) during lowering. DELT2 (middle) had sustained activation, peaking around 220 N, supporting abduction throughout.</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-bolt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Triceps Muscles</h6>
+                                            <p>TRIlong (long head) was the dominant elbow extensor, peaking around 360 N during the extension phase. TRImed (medial) and TRIlat (lateral) showed significantly lower peaks (~30-40 N), assisting the long head.</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-arrows-alt-v"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Latissimus Dorsi</h6>
+                                            <p>This muscle group contributed to postural control and stabilization, particularly during the lowering phase. Peak forces were generally lower than primary movers, with LAT1 peaking around 50 N.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This research contributes valuable insights into the biomechanics of overhead pressing movements, with applications in rehabilitation protocol design, sports performance optimization, and the development of assistive robotic devices. The detailed muscle force estimations and joint kinetics analysis provide a foundation for understanding injury mechanisms, optimizing training techniques, and designing more effective human-robot interaction systems that complement natural human movement patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .projects-section {
+            padding: var(--section-padding);
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        .projects-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(0, 113, 227, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--light);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .projects-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-category {
+            margin-bottom: 4rem;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        .project-card.enhanced {
+            background: linear-gradient(145deg, rgba(29, 29, 31, 0.8), rgba(29, 29, 31, 0.5));
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.5rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .project-highlight-box {
+            display: flex;
+            gap: 1.5rem;
+            background: rgba(0, 113, 227, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 2rem;
+        }
+        
+        .highlight-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .highlight-content h5 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .methodology-section, .key-findings, .conclusion-section {
+            margin: 2.5rem 0;
+        }
+        
+        .methodology-section h5, .key-findings h5, .conclusion-section h5 {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .step {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .step-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            opacity: 0.8;
+            line-height: 1;
+        }
+        
+        .step-content h6 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+        
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .finding-item {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .finding-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .finding-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .finding-content h6 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+        
+        .conclusion-section {
+            background: rgba(255, 55, 95, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Collage-style image layout */
+        .project-images {
+            margin: 2.5rem 0;
+            width: 100%;
+        }
+        
+        .image-collage {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 15px;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px; /* Limit overall width */
+            margin: 0 auto;
+        }
+        
+        /* For 2-image collage */
+        .image-collage-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        /* For 3-image collage */
+        .image-collage-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover to fill the space */
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            transform: scale(0.95); /* Slightly downscaled by default */
+        }
+        
+        /* Hover effects */
+        .project-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-image:hover img {
+            transform: scale(1.0); /* Return to normal size on hover */
+        }
+        
+        /* Image caption styling */
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--light);
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-image:hover .image-caption {
+            opacity: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .image-collage, .image-collage-2, .image-collage-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .image-collage, .image-collage-2, .image-collage-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* New centered content styling */
+        .centered-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .centered-small-image {
+            width: 250px; /* Very small size */
+            height: auto;
+            border-radius: 12px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .centered-small-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 113, 227, 0.5);
+        }
+        
+        .video-link {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            margin-top: 1rem;
+        }
+        
+        .video-link:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+        }
+        
+        .video-link i {
+            margin-right: 8px;
+        }
+    </style>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // Mobile menu toggle
+        let mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        let navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                if (navLinks.classList.contains('active')) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        }
+        
+        // Header scroll effect
+        let header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#0071e3'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#0071e3',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Mobile menu dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const link = item.querySelector('a');
+                
+                if (window.innerWidth <= 768) {
+                    link.addEventListener('click', function(e) {
+                        if (item.querySelector('.dropdown-menu')) {
+                            e.preventDefault();
+                            item.classList.toggle('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Add this after the projects section -->
+    <section id="spirituality" class="spirituality-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Spiritual Journey</h2>
+            
+            <div class="spiritual-content" data-aos="fade-up" data-aos-delay="100">
+                <div class="spiritual-backdrop">
+                    <div class="mandala-overlay"></div>
+                    <div class="light-rays"></div>
+                </div>
+                
+                <div class="scripture-content">
+                    <h3>My Path to Divine Connection</h3>
+                    
+                    <!-- Navigation blocks similar to "Connect With Me" -->
+                    <div class="spiritual-nav-container">
+                        <div class="nav-item spiritual-nav-item">
+                            <a href="./spiritual-journey.html" class="btn spiritual-btn">
+                                <i class="fas fa-om"></i> My Spiritual Journey
+                            </a>
+                            <div class="dropdown-menu spiritual-dropdown">
+                                <p class="dropdown-preview">My spiritual journey began during the second year of my college life, sparked by some deeply transformative and serious life events...</p>
+                                <a href="./spiritual-journey.html" class="read-more">
+                                    Read Full Journey <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-item spiritual-nav-item">
+                            <a href="./spiritual-teachings.html" class="btn spiritual-btn">
+                                <i class="fas fa-book-open"></i> Teachings from Sacred Texts
+                            </a>
+                            <div class="dropdown-menu spiritual-dropdown">
+                                <div class="dropdown-preview sanskrit-preview">
+                                    योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।<br>
+                                    सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥
+                                </div>
+                                <a href="./spiritual-teachings.html" class="read-more">
+                                    Explore Teachings <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Spirituality Section Styling */
+        .spirituality-section {
+            padding: var(--section-padding);
+            position: relative;
+            background: linear-gradient(to bottom, rgba(29, 29, 31, 0.9), rgba(12, 12, 14, 0.95)), 
+                        url('images/hostel1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+        
+        .spiritual-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .spiritual-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .mandala-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/oriental-tiles.png');
+            opacity: 0.07;
+            mix-blend-mode: overlay;
+        }
+        
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+        
+        .scripture-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            background: rgba(30, 20, 10, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .scripture-image {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .scripture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(30%);
+            transition: all 0.5s ease;
+        }
+        
+        .scripture-card:hover .scripture-image img {
+            transform: scale(1.05);
+            filter: sepia(20%);
+        }
+        
+        .radha-shyam-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            color: rgba(255, 215, 0, 0.8);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+        
+        .scripture-card:hover .radha-shyam-symbol {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        
+        .scripture-content {
+            padding: 2.5rem;
+            color: var(--light);
+        }
+        
+        .scripture-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .sanskrit-verse {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-left: 3px solid #ffd700;
+            border-radius: 0 10px 10px 0;
+            color: #ffd700;
+        }
+        
+        .verse-meaning {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+            border-left: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .verse-reference {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #ffd700;
+            margin-top: 0.5rem;
+        }
+        
+        .spiritual-text {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .spiritual-practices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .practice-item {
+            background: rgba(30, 20, 10, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        /* Spiritual navigation styling */
+        .spiritual-nav-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .spiritual-nav-item {
+            position: relative;
+        }
+        
+        .spiritual-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .spiritual-btn:hover {
+            background: rgba(255, 215, 0, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .spiritual-dropdown {
+            width: 350px;
+            background: rgba(20, 10, 5, 0.95);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dropdown-preview {
+            padding: 1.5rem;
+            color: var(--light);
+            font-style: italic;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        .sanskrit-preview {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: #ffd700;
+            text-align: center;
+            line-height: 1.8;
+        }
+        
+        .read-more {
+            display: block;
+            padding: 1rem;
+            text-align: center;
+            color: #ffd700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .read-more:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .spiritual-nav-container {
+                flex-direction: column;
+            }
+            
+            .spiritual-dropdown {
+                width: 100%;
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                margin-top: 1rem;
+                display: none;
+            }
+            
+            .spiritual-nav-item.active .spiritual-dropdown {
+                display: block;
+            }
+        }
+    </style>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // Mobile menu toggle
+        let mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        let navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                if (navLinks.classList.contains('active')) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        }
+        
+        // Header scroll effect
+        let header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#0071e3'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#0071e3',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Mobile menu dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const link = item.querySelector('a');
+                
+                if (window.innerWidth <= 768) {
+                    link.addEventListener('click', function(e) {
+                        if (item.querySelector('.dropdown-menu')) {
+                            e.preventDefault();
+                            item.classList.toggle('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Spiritual navigation dropdown toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const spiritualNavItems = document.querySelectorAll('.spiritual-nav-item');
+            
+            spiritualNavItems.forEach(item => {
+                const btn = item.querySelector('.spiritual-btn');
+                
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

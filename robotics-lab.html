@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IITGN Robotics Lab - Samriddhi Dubey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary: #0071e3;
+            --primary-dark: #0051a3;
+            --dark: #000000;
+            --light: #f5f5f7;
+            --gray: #86868b;
+            --card: #1d1d1f;
+            --accent: #ff375f;
+            --section-padding: 120px 0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(29, 29, 31, 0.9), rgba(12, 12, 14, 0.95)), 
+                        url('images/robotics-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .robotics-page {
+            padding: var(--section-padding);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 113, 227, 0.3);
+            padding-top: 60px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        .robotics-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(20, 20, 25, 0.85);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 113, 227, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .robotics-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .circuit-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/circuit-board.png');
+            opacity: 0.07;
+            mix-blend-mode: overlay;
+        }
+        
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 113, 227, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+        
+        .robotics-text {
+            position: relative;
+            z-index: 5;
+            color: var(--light);
+            line-height: 1.8;
+        }
+        
+        .robotics-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .back-to-main {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .robotics-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(0, 113, 227, 0.15);
+            color: var(--primary);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 113, 227, 0.3);
+        }
+        
+        .robotics-btn:hover {
+            background: rgba(0, 113, 227, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .robotics-story {
+            display: flex;
+            margin: 3rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 113, 227, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .story-image {
+            flex: 0 0 40%;
+            max-height: 350px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .robotics-story:hover .story-image img {
+            transform: scale(1.05);
+        }
+        
+        .story-content {
+            flex: 0 0 60%;
+            padding: 2rem;
+        }
+        
+        .story-content h3 {
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+        
+        .story-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .reverse-layout {
+            flex-direction: row-reverse;
+        }
+        
+        @media (max-width: 768px) {
+            .robotics-content {
+                padding: 2rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .robotics-story {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                flex: 0 0 200px;
+            }
+            
+            .reverse-layout {
+                flex-direction: column;
+            }
+        }
+        
+        /* Simple Auto-scrolling Slideshow */
+        .simple-slideshow {
+            max-width: 900px;
+            margin: 0 auto 3rem auto;
+            overflow: hidden;
+            background: rgba(20, 20, 25, 0.85);
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 113, 227, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slideshow-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .slideshow-btn {
+            background: rgba(0, 113, 227, 0.15);
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .slideshow-btn:hover {
+            background: rgba(0, 113, 227, 0.25);
+        }
+        
+        .slideshow-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slideshow-track {
+            display: flex;
+            animation: scroll 40s linear infinite;
+            width: calc(250px * 11); /* Width of each slide * number of slides including duplicates */
+        }
+        
+        .slide-item {
+            width: 250px;
+            height: 200px; /* Reduced height to match spiritual journey images */
+            flex-shrink: 0;
+            padding: 0 10px;
+        }
+        
+        .slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 113, 227, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .slide-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-250px * 8)); /* Width of each slide * number of original slides */
+            }
+        }
+        
+        /* Pause animation on hover */
+        .simple-slideshow:hover .slideshow-track {
+            animation-play-state: paused;
+        }
+        
+        @media (max-width: 768px) {
+            .simple-slideshow {
+                padding: 1rem;
+            }
+            
+            .slide-item {
+                width: 180px;
+                height: 150px;
+            }
+            
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-180px * 8)); /* Adjusted for mobile */
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="./index.html" class="logo">Samriddhi Dubey</a>
+        </div>
+    </header>
+    
+    <section class="robotics-page">
+        <div class="container">
+            <h1 class="page-title">My Journey at IITGN Robotics Lab</h1>
+            
+            <!-- Simple Auto-scrolling Slideshow -->
+            <div class="simple-slideshow">
+                <div class="slideshow-controls">
+                    <button class="slideshow-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slideshow-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="slideshow-wrapper">
+                    <div class="slideshow-track">
+                        <div class="slide-item"><img src="images/lab1.jpg" alt="Robotics Lab"></div>
+                        <div class="slide-item"><img src="images/lab.jpg" alt="Robotics Lab"></div>
+                        <div class="slide-item"><img src="images/lab3.jpg" alt="Robotics Lab"></div>
+                        <div class="slide-item"><img src="images/lab4.jpg" alt="Robotics Lab"></div>
+                        <div class="slide-item"><img src="images/lab5.jpg" alt="Robotics Lab"></div>
+                        <div class="slide-item"><img src="images/lab6.jpg" alt="Robotics Lab"></div>
+                        <div class="slide-item"><img src="images/lab7.jpg" alt="Robotics Lab"></div>
+                        <div class="slide-item"><img src="images/addverb1.jpg" alt="Addverb Visit"></div>
+                        <div class="slide-item"><img src="images/addverb2.jpg" alt="Addverb Visit"></div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="robotics-content">
+                <div class="robotics-backdrop">
+                    <div class="circuit-overlay"></div>
+                    <div class="light-rays"></div>
+                </div>
+                
+                <div class="robotics-text">
+                    <p>I am incredibly fortunate to be part of the prestigious IITGN Robotics Lab. This lab has become my second home, where I've had the privilege to work on cutting-edge robotics research under exceptional mentorship.</p>
+                
+                    <p>The lab is co-managed by Professor Harish PM and Professor Madhu Vadali, both exceptional mentors who have guided me throughout my research journey. Their expertise and supportive approach have been instrumental in my growth as a robotics researcher.</p>
+                  
+                    <p>The lab environment is truly world-class, equipped with state-of-the-art facilities and equipment that enable innovative research in various domains of robotics. What makes this lab special is how we work together as a team, collaborating on projects and supporting each other's research endeavors.</p>
+                    
+                    <p>Currently, I'm working on a project in collaboration with Addverb Technologies, a leading robotics company specializing in warehouse automation. In 2024 December, I had the valuable opportunity to visit their facility, which provided practical insights into industrial applications of robotics research. This collaboration has enriched my understanding of how academic research can be translated into real-world solutions.</p>
+        
+                    <p>My journey at the IITGN Robotics Lab continues to be a transformative experience. Each day brings new challenges and learning opportunities that fuel my passion for robotics.</p>
+                       
+                       
+                    <div class="back-to-main">
+                        <a href="./index.html#IITGN-Robotics-Lab" class="btn robotics-btn">
+                            <i class="fas fa-arrow-left"></i> Back to Main Page
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init();
+            
+            // Slideshow controls
+            const track = document.querySelector('.slideshow-track');
+            const slides = document.querySelectorAll('.slide-item');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            if (track && slides.length > 0 && prevBtn && nextBtn) {
+                // Remove any existing animation
+                track.style.animation = 'none';
+                
+                let currentPosition = 0;
+                const slideWidth = slides[0].offsetWidth;
+                const visibleSlides = Math.floor(track.parentElement.offsetWidth / slideWidth);
+                const maxPosition = slides.length - visibleSlides;
+                
+                // Function to update slide position
+                function updateSlidePosition() {
+                    track.style.transform = `translateX(-${currentPosition * slideWidth}px)`;
+                }
+                
+                // Previous button click
+                prevBtn.addEventListener('click', function() {
+                    currentPosition = Math.max(0, currentPosition - 1);
+                    updateSlidePosition();
+                });
+                
+                // Next button click
+                nextBtn.addEventListener('click', function() {
+                    currentPosition = Math.min(maxPosition, currentPosition + 1);
+                    updateSlidePosition();
+                });
+                
+                // Initialize position
+                updateSlidePosition();
+            }
+        });
+    </script>
+</body>
+</html>

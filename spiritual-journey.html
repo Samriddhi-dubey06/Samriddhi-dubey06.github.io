@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Spiritual Journey - Samriddhi Dubey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        :root {
+            --primary: #0071e3;
+            --primary-dark: #0051a3;
+            --dark: #000000;
+            --light: #f5f5f7;
+            --gray: #86868b;
+            --card: #1d1d1f;
+            --accent: #ff375f;
+            --section-padding: 120px 0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(29, 29, 31, 0.9), rgba(12, 12, 14, 0.95)), 
+                        url('/home/samriddhi/Downloads/hostel1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .spiritual-page {
+            padding: var(--section-padding);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 3rem;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+            padding-top: 60px;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+        }
+        
+        .spiritual-content-full {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(20, 10, 5, 0.85);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .spiritual-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .mandala-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/oriental-tiles.png');
+            opacity: 0.07;
+            mix-blend-mode: overlay;
+        }
+        
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+        
+        .spiritual-text-full {
+            position: relative;
+            z-index: 5;
+            color: var(--light);
+            line-height: 1.8;
+        }
+        
+        .spiritual-text-full p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .back-to-main {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .spiritual-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .spiritual-btn:hover {
+            background: rgba(255, 215, 0, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .spiritual-content-full {
+                padding: 2rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="./index.html" class="logo">Samriddhi Dubey</a>
+        </div>
+    </header>
+    
+    <section class="spiritual-page">
+        <div class="container">
+            <h1 class="page-title">My Spiritual Journey</h1>
+            
+            <div class="spiritual-content-full">
+                <div class="spiritual-backdrop">
+                    <div class="mandala-overlay"></div>
+                    <div class="light-rays"></div>
+                </div>
+                
+                <div class="spiritual-text-full">
+                    <p>My spiritual journey began during the second year of my college life, sparked by some deeply transformative and serious life events. Until then, I believed in God, but my devotion lacked depth and commitment. It was during those trying times that I turned toward worshipping Lord Shiva, whose divine grace gradually led me deeper into the path of bhakti.</p>
+                    
+                    <p>Through His blessings, my soul found solace and complete surrender at the lotus feet of Shri Shri Radha Madhav. My initial connection was with Lord Rama and His devoted sevak, Hanuman ji, and through them, I was drawn to the divine poetry of the Ramcharitmanas by Goswami Tulsidas ji.</p>
+                    
+                    <p>But with time—and by the unfathomable mercy of the Lord—I came to experience the ever-present, all-pervading divinity of Shri Shri 108 Radha Madhav, and my life has never been the same since.</p>
+
+                    <!-- Story sections with image on left, text on right -->
+                    <div class="spiritual-story">
+                        <div class="story-image">
+                            <img src="/home/samriddhi/Downloads/bhog.jpg" alt="Temple Visit">
+                            
+                        </div>
+                        <div class="story-content">
+                            <h3>Offering Bhog to my Banke Bihari </h3>
+                            <p>When I entered into spirituality I knew almost nothing about its practises, rituals, and beliefs. SO, I started with the simplest thing,which is offering bhog to my almighty Banke Bihari ji.Everything in this world is owned by the Almighty "Krishna" and offering him his share is the simplest way to connect with him. </p>
+                        </div>
+                    </div>
+                    
+                    <div class="spiritual-story">
+                        <div class="story-image">
+                            <img src="/home/samriddhi/Downloads/kishori.jpg" alt="Divine Connection">
+                            
+                        </div>
+                        <div class="story-content">
+                            <h3>Gau Seva</h3>
+                            <p> My undertsanding about Krishna deepened when I started doing Gau Seva. I have one cow and her calf. I feed them, take care of them at home and worship them daily when I am at home. SInce, Krishna loves cows a lot, so I take blessings from them to enrich my love and bhakti towards him and Radha Rani my Kishori ju.</p>
+                        </div>
+                    </div>
+
+                    <div class="spiritual-story">
+                        <div class="story-image">
+                            <img src="/home/samriddhi/Downloads/book.jpg" alt="Divine Connection">
+                            <!-- <div class="image-caption">Shrimad Bhagwad Geeta</div> -->
+                        </div>
+                        <div class="story-content">
+                            <h3>Shrimad Bhagwad Geeta</h3>
+                            <p> As time passed, I started reading Shrimad Bhagwad Geeta. It is a book of knowledge and wisdom. It is a book of devotion and surrender. It is a book of love and compassion. It is a book of peace and harmony. It is a book of truth and reality. It is a book of God and His creation. It is a book of Krishna and His devotees. I dont have words to describe the beauty of this book. </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Removed the first video section and kept only the one at the bottom -->
+                    
+                    <!-- Reversed layout section -->
+                    <div class="spiritual-story reverse-layout">
+                        <div class="story-content">
+                            <p>The spiritual path has transformed me in ways I never imagined possible. Through daily practice and devotion, I've developed greater patience, compassion, and inner peace.</p>
+                            <p>What began as a search for answers has blossomed into a lifelong journey of self-discovery and connection with the divine. Each day brings new insights and opportunities for growth.</p>
+                        </div>
+                        <div class="story-image">
+                            <img src="/home/samriddhi/Downloads/me.jpg" alt="Personal Transformation">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <p> I have made a small temple in my room of shri Radha Madhav. I offer bhog to them daily and chant their names. They are my constant companions and I feel their presence in my life.Oh my Radha Madhav, I love you both so much. Please forgive me for all my sins and mistakes. I promise to do better in future. I love you both so much. </p>
+
+                <!-- Add only the video section at the bottom -->
+                <div class="spiritual-story">
+                    <div class="story-video">
+                        <video src="/home/samriddhi/Downloads/krishna.mp4" muted autoplay loop class="journey-video"></video>
+                        <div class="video-caption">My Spiritual Practice</div>
+                    </div>
+                    <div class="story-content">
+                        <h3>Daily Spiritual Practice</h3>
+                        <p>My day begins with a spiritual practice. I wake up and offer prayers to my Gurudev Bhagwan, then on bed I chant the names of Radha Madhav and then start my daily routine.  Incorporating spiritual practices into my daily routine has been transformative. </p>
+                        <p>These consistent practices have helped me maintain inner peace and spiritual connection throughout the day, regardless of external circumstances.I consider myself very fortunate to have found this path in life. I beleive that whatever is happening in my life, it is all part of the divine plan. I try to stay positive and believe that everything happens for a reason. I am grateful for all the blessings in my life and I try to share my love and kindness with everyone I meet. </p>
+                    </div>
+                </div>
+                <!-- Add a section with video background and overlay text -->
+                <div class="video-background-section">
+                    <video src="/home/samriddhi/Downloads/video.mp4" muted autoplay loop class="background-video"></video>
+                    <div class="video-overlay">
+                       <p class="overlay-text">I strongly believe that my devotion to Radha Madhav is a result of the immense love and blessings of great devotees. Their lives have deeply influenced me, and I constantly draw inspiration from their unwavering faith, selfless love, and complete surrender. Among these divine souls, Meera Bai holds a very special place in my heart. Her fearless devotion, poetic outpourings, and unshakable love for Shyamsundar inspire me to walk the path of bhakti with the same purity and dedication.
+
+                        I also revere the great saint Tulsidas Ji, whose life and works have brought Rama Bhakti to countless hearts, and Shabari Maiya, whose patient, loving wait for Lord Rama exemplifies true devotion.</p>
+                    </div>
+                </div>
+                <!-- Moved back-to-main to the bottom -->
+                <div class="back-to-main">
+                    <a href="./index.html#spirituality" class="btn spiritual-btn">
+                        <i class="fas fa-arrow-left"></i> Back to Main Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
+
+<!-- Add CSS for the images -->
+<style>
+    .spiritual-gallery {
+        margin: 2rem 0;
+        text-align: center;
+    }
+    
+    .journey-image {
+        display: inline-block;
+        margin: 0;
+        max-width: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .journey-image:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 215, 0, 0.4);
+    }
+    
+    .journey-image img {
+        width: 100%;
+        max-width: 60px;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    
+    .journey-image:hover img {
+        transform: scale(1.03);
+    }
+    
+    .journey-image figcaption {
+        padding: 1rem;
+        background: rgba(20, 10, 5, 0.9);
+        color: #ffd700;
+        font-size: 0.9rem;
+        font-style: italic;
+    }
+    /* Add these styles to make the images smaller */
+    .spiritual-text-full .project-images {
+        max-width: 100%;
+        margin: 2rem auto;
+    }
+    
+    .spiritual-text-full .project-image {
+        max-height: 300px; /* Reduce the height */
+    }
+    
+    .spiritual-text-full .project-image img {
+        height: 200px; /* Fixed height */
+        object-fit: center;
+    }
+    
+    /* For even smaller images on mobile */
+    @media (max-width: 568px) {
+        .spiritual-text-full .project-images {
+            max-width: 95%;
+        }
+        
+        .spiritual-text-full .project-image {
+            max-height: 150px;
+        }
+        
+        .spiritual-text-full .project-image img {
+            height: 150px;
+        }
+    }
+</style>
+
+<!-- Styling for story sections -->
+<style>
+    .spiritual-story {
+        display: flex;
+        margin: 3rem 0;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .story-image {
+        flex: 0 0 30%; /* Reduce width proportion */
+        max-height: 350px; /* Limit maximum height */
+    }
+    
+    .story-image img {
+        width: 100%;
+        height: 300px; /* Fixed smaller height */
+        object-fit: cover;
+        display: block;
+    }
+    
+    .story-content {
+        flex: 0 0 70%; /* Increase text area proportion */
+        padding: 2rem;
+    }
+    
+    .story-content h3 {
+        color: #ffd700;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+    }
+    
+    .story-content p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+    
+    .image-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #ffd700;
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .spiritual-story {
+            flex-direction: column;
+        }
+        
+        .story-image {
+            flex: 0 0 200px;
+        }
+    }
+    /* Compress paragraphs - less width, more height */
+    .story-content {
+        padding: 1.5rem;
+        max-width: 95%; /* Limit width */
+    }
+    
+    .story-content p {
+        font-size: 0.9rem;
+        line-height: 1.4; /* Tighter line height */
+        margin-bottom: 0.6rem;
+        max-width: 90%; /* Further limit paragraph width */
+    }
+    
+    /* Adjust story layout for better proportions */
+    .spiritual-story {
+        margin: 2rem 0;
+    }
+    
+    .story-image {
+        flex: 0 0 35%; /* Reduce image width slightly */
+    }
+    
+    .story-content {
+        flex: 0 0 65%; /* Increase text area width */
+    }
+    
+    /* Add scrolling for very long content */
+    @media (min-width: 769px) {
+        .story-content {
+            max-height: 220px; /* Limit height on desktop */
+            overflow-y: auto; /* Add scrolling if needed */
+        }
+        
+        /* Style the scrollbar */
+        .story-content::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .story-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 215, 0, 0.3);
+            border-radius: 5px;
+        }
+    }
+</style>
+
+
+<style>
+    /* Styling for video in spiritual story */
+    .story-video {
+        flex: 0 0 30%;
+        position: relative;
+        max-height: 780px;
+        overflow: hidden;
+    }
+    
+    .journey-video {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        display: block;
+    }
+    
+    .video-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #ffd700;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+    
+    /* Video controls on hover */
+    .story-video:hover .journey-video {
+        opacity: 0.9;
+    }
+    
+    /* For mobile devices */
+    @media (max-width: 768px) {
+        .story-video {
+            max-height: 250px;
+        }
+        
+        .journey-video {
+            height: 250px;
+        }
+    }
+</style>
+
+<!-- Styling for video background section -->
+<style>
+    .video-background-section {
+        position: relative;
+        width: 100%;
+        height: 650px;
+        margin: 3rem 0;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+    }
+    
+    .background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        filter: brightness(0.4) sepia(0.2);
+    }
+    
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+    }
+    
+    .overlay-text {
+        color: #ffd700;
+        text-align: center;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 80%;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        font-style: italic;
+    }
+    
+    /* For mobile devices */
+    @media (max-width: 768px) {
+        .video-background-section {
+            height: 400px;
+        }
+        
+        .overlay-text {
+            font-size: 0.95rem;
+            max-width: 90%;
+        }
+    }
+</style>
