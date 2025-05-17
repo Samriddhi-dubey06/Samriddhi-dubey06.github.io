@@ -782,6 +782,45 @@
             }
         }
     </style>
+    <style>
+        /* Fix for dropdown menu overflow */
+        .dropdown-menu.hierarchical {
+            max-height: 500px; /* Increase max height */
+            overflow-y: auto; /* Add scrolling if needed */
+            width: 350px; /* Increase width to fit longer project names */
+        }
+        
+        .dropdown-menu a {
+            white-space: normal; /* Allow text to wrap */
+            line-height: 1.3; /* Reduce line height */
+            padding: 8px 15px; /* Adjust padding */
+        }
+        
+        .dropdown-section {
+            padding: 10px 0; /* Add some padding between sections */
+        }
+        
+        /* Ensure dropdown stays visible on screen */
+        .nav-item:hover .dropdown-menu {
+            display: block;
+            max-height: 80vh; /* Limit to 80% of viewport height */
+            overflow-y: auto; /* Enable scrolling if needed */
+        }
+        
+        /* Make sure dropdown doesn't go off-screen */
+        @media (max-width: 992px) {
+            .dropdown-menu.hierarchical {
+                width: 300px; /* Slightly smaller on medium screens */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dropdown-menu.hierarchical {
+                width: 100%; /* Full width on mobile */
+                position: static; /* Keep dropdown in flow on mobile */
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="cursor"></div>
@@ -816,12 +855,25 @@
                             <a href="#spac-r-project">SPAC-R: Suction-Driven Paper Assembly</a>
                             <a href="#inverted-pendulum">Inverted Pendulum Control</a>
                             <a href="#limb-impedance">Limb Impedance in Human Tasks</a>
-                            <a href="#overhead-press">Overhead Press Simulation</a>
+                            <a href="#workspace-analysis">Robot-Assisted Human Limb Workspace Analysis</a>
+                            <a href="#overhead-press"> Overhead Press Simulation</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Robotics Research with nested dropdown -->
+                <div class="nav-item">
+                    <a href="#robotics-research">Robotics Research</a>
+                    <div class="dropdown-menu hierarchical">
+                        <div class="dropdown-section">
+                            <a href="robotics-lab.html">IITGN Robotics Lab</a>
                         </div>
                         <div class="dropdown-section">
-                            <h6 class="dropdown-heading"><i class="fas fa-robot"></i>Robotics Research</h6>
-                            <a href="robotics-lab.html">IITGN Robotics Lab</a>
-                            <a href="#robotics-research">Current Research Projects</a>
+                            <h6 class="dropdown-heading"><i class="fas fa-microscope"></i>Research Projects</h6>
+                            <a href="#cartesian-impedance">Cartesian Impedance Control on HEAL</a>
+                            <a href="#joint-impedance">Joint Impedance Control on HEAL</a>
+                            <a href="#admittance-control">Admittance Control on HEAL</a>
+                            <a href="#object-admittance">Object Admittance Control on HEAL</a>
+                            <a href="#impedance-2r">Impedance Control on 2R Manipulator</a>
                         </div>
                     </div>
                 </div>
@@ -1060,7 +1112,7 @@
                     <div class="shape shape-2"></div>
                 </div>
                 <div class="profile-pic-container">
-                    <img src="images/samriddhi.jpg" alt="Samriddhi Dubey" class="profile-pic">
+                    <img src="/home/samriddhi/Downloads/samriddhi.jpg" alt="Samriddhi Dubey" class="profile-pic">
                 </div>
             </div>
         </div>
@@ -1079,7 +1131,7 @@
             <div id="about-me" class="intro-container" data-aos="fade-up" data-aos-duration="1000">
                 <h2 class="section-title">About Me</h2>
                 
-                <p>Welcome to my website — a place where technology meets tradition. I'm Samriddhi Dubey, a passionate explorer in the world of robotics.</p>
+                <p>Welcome to my website — a place where technology meets tradition. I'm Samriddhi Dubey, a passionate explorer in the world of robotics from Deori, a serene town in the Sagar district of Madhya Pradesh.</p>
                 
                 <p>I come from Deori, a serene town in the Sagar district of Madhya Pradesh, and completed my schooling at Noble Public School. I earned my B.Tech from Jabalpur Engineering College as the <strong>Gold Medalist in Mechanical Engineering</strong>, and under an exchange program, completed my final semester at IIT Indore, which further deepened my curiosity and commitment toward advanced robotics research.</p>
                 
@@ -1680,206 +1732,6 @@
                                     border-radius: 30px;
                                     text-decoration: none;
                                     font-weight: 600;
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-category" id="IITGN-Robotics-Lab" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="category-title">IITGN Robotics Lab</h3>
-                    
-                    <div class="project-card enhanced">
-                        <div class="project-header">
-                            <h4 class="project-title">IITGN Robotics Research Laboratory</h4>
-                            <div class="project-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> IIT Gandhinagar</span>
-                                <span><i class="fas fa-user"></i> Mechanical Engineering Department</span>
-                                <span><i class="fas fa-robot"></i> Robotics Research</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-content">
-                            <p class="intro-text">I am fortunate to be part of the prestigious Robotics Lab at IIT Gandhinagar under the guidance of Professor Harish PM from the Mechanical Engineering department.</p>
-                            
-                            <div class="lab-grid">
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/robotics-lab1.jpg" alt="IITGN Robotics Lab">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>World-Class Research Environment</h5>
-                                        <p>Being part of the IITGN Robotics Lab has been an incredibly rewarding experience. The lab is equipped with state-of-the-art facilities and equipment that enable cutting-edge research in various domains of robotics. The environment is collaborative and supportive, with researchers working together as a team on innovative projects that push the boundaries of what's possible in robotics technology.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/prof-mentorship.jpg" alt="Professor Mentorship">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>Exceptional Mentorship</h5>
-                                        <p>The lab is co-managed by Professor Harish PM and Professor Madhu Vadali, creating a diverse research environment that spans multiple areas of robotics. Professor Harish focuses on manipulation and control systems, while Professor Madhu Vadali specializes in soft robotics. Their complementary expertise and supportive guidance have been instrumental in my growth as a researcher, providing me with a well-rounded understanding of robotics principles.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/addverb-visit.jpg" alt="Addverb Technologies Visit">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>Industry Collaboration</h5>
-                                        <p>My current project is being conducted in collaboration with Addverb Technologies, a leading robotics company specializing in warehouse automation. In December, I had the valuable opportunity to visit their facility, which provided practical insights into industrial applications of robotics research. This collaboration has enriched my understanding of how academic research can be translated into real-world solutions, bridging the gap between theory and practice.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/team-collaboration.jpg" alt="Team Collaboration">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>Teamwork and Growth</h5>
-                                        <p>The peaceful and supportive environment of the lab has been crucial for my academic and professional development. We work as a cohesive team, sharing ideas, providing feedback, and helping each other overcome challenges. This collaborative approach has not only enhanced my technical skills but also taught me the value of teamwork in advancing robotics research. The connections I've formed and the experiences I've gained in this lab will undoubtedly shape my future career in robotics.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="about" class="intro-section">
-        <div class="container">
-            <!-- About Me Section -->
-            <div id="about-me" class="intro-container" data-aos="fade-up" data-aos-duration="1000">
-                <h2 class="section-title">About Me</h2>
-                
-                <p>Welcome to my website — a place where technology meets tradition. I'm Samriddhi Dubey, a passionate explorer in the world of robotics from Deori, a serene town in the Sagar district of Madhya Pradesh.</p>
-                
-                <p>I come from Deori, a serene town in the Sagar district of Madhya Pradesh, and completed my schooling at Noble Public School. I earned my B.Tech from Jabalpur Engineering College as the <strong>Gold Medalist in Mechanical Engineering</strong>, and under an exchange program, completed my final semester at IIT Indore, which further deepened my curiosity and commitment toward advanced robotics research.</p>
-                
-                <p>During my undergraduate studies, I developed expertise in mechanical systems analysis, particularly focusing on axial piston pumps and fault diagnosis. I worked extensively with MATLAB Simulink to create simulation models for analyzing leakage faults and pressure fluctuations in hydraulic systems. With time, my interest gradually shifted toward robotics, which became my primary focus for advanced studies.</p>
-                
-                <p>My primary research interest now lies in manipulation and grasping, where I am currently working on implementing object impedance and object admittance controllers to enhance robotic interaction with unstructured environments.</p>
-                
-                <p>Beyond the circuits and code, I have a profound interest in spiritual knowledge, drawing immense inspiration from the Bhagavad Gita, Shrimad Bhagavatam, and other timeless Indian scriptures.</p>
-                
-                <p>This website is a reflection of both my technical journey and spiritual inclinations. Whether you're here to explore robotics, read about my projects, or connect over shared interests — I'm grateful you stopped by.</p>
-            </div>
-            
-            <!-- My Achievements Section - Styled like SPAC-R section -->
-            <div id="achievements" class="achievements-container" data-aos="fade-up" data-aos-duration="1000">
-                <h2 class="section-title">My Achievement Journey</h2>
-                
-                <div class="project-card enhanced">
-                    <div class="project-header">
-                        <h4 class="project-title">Academic & Professional Milestones</h4>
-                        <div class="project-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2015-Present</span>
-                            <span><i class="fas fa-user"></i> Samriddhi Dubey</span>
-                           
-                                <span><i class="fas fa-map-marker-alt"></i> IIT Gandhinagar</span>
-                                <span><i class="fas fa-user"></i> Mechanical Engineering Department</span>
-                                <span><i class="fas fa-robot"></i> Robotics Research</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-content">
-                            <p class="intro-text">I am fortunate to be part of the prestigious Robotics Lab at IIT Gandhinagar under the guidance of Professor Harish PM from the Mechanical Engineering department.</p>
-                            
-                            <div class="lab-grid">
-                                <!-- First card -->
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/robotics-lab1.jpg" alt="IITGN Robotics Lab">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>World-Class Research Environment</h5>
-                                        <p>Being part of the IITGN Robotics Lab has been an incredibly rewarding experience. The lab is equipped with state-of-the-art facilities and equipment that enable cutting-edge research in various domains of robotics. The environment is collaborative and supportive, with researchers working together as a team on innovative projects that push the boundaries of what's possible in robotics technology.</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Second card -->
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/prof-mentorship.jpg" alt="Professor Mentorship">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>Exceptional Mentorship</h5>
-                                        <p>The lab is co-managed by Professor Harish PM and Professor Madhu Vadali, creating a diverse research environment that spans multiple areas of robotics. Professor Harish focuses on manipulation and control systems, while Professor Madhu Vadali specializes in soft robotics. Their complementary expertise and supportive guidance have been instrumental in my growth as a researcher, providing me with a well-rounded understanding of robotics principles.</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Third card -->
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/addverb-visit.jpg" alt="Addverb Technologies Visit">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>Industry Collaboration</h5>
-                                        <p>My current project is being conducted in collaboration with Addverb Technologies, a leading robotics company specializing in warehouse automation. In December, I had the valuable opportunity to visit their facility, which provided practical insights into industrial applications of robotics research. This collaboration has enriched my understanding of how academic research can be translated into real-world solutions, bridging the gap between theory and practice.</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Fourth card -->
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/team-collaboration.jpg" alt="Team Collaboration">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>Teamwork and Growth</h5>
-                                        <p>The peaceful and supportive environment of the lab has been crucial for my academic and professional development. We work as a cohesive team, sharing ideas, providing feedback, and helping each other overcome challenges. This collaborative approach has not only enhanced my technical skills but also taught me the value of teamwork in advancing robotics research. The connections I've formed and the experiences I've gained in this lab will undoubtedly shape my future career in robotics.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-category" id="IITGN-Robotics-Lab" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="category-title">IITGN Robotics Lab</h3>
-                    
-                    <div class="project-card enhanced">
-                        <div class="project-header">
-                            <h4 class="project-title">IITGN Robotics Research Laboratory</h4>
-                            <div class="project-meta">
-                                <span><i class="fas fa-map-marker-alt"></i> IIT Gandhinagar</span>
-                                <span><i class="fas fa-user"></i> Mechanical Engineering Department</span>
-                                <span><i class="fas fa-robot"></i> Robotics Research</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-content">
-                            <p class="intro-text">I am fortunate to be part of the prestigious Robotics Lab at IIT Gandhinagar under the guidance of Professor Harish PM from the Mechanical Engineering department.</p>
-                            
-                            <div class="lab-grid">
-                                <!-- First card -->
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/robotics-lab1.jpg" alt="IITGN Robotics Lab">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>World-Class Research Environment</h5>
-                                        <p>Being part of the IITGN Robotics Lab has been an incredibly rewarding experience. The lab is equipped with state-of-the-art facilities and equipment that enable cutting-edge research in various domains of robotics. The environment is collaborative and supportive, with researchers working together as a team on innovative projects that push the boundaries of what's possible in robotics technology.</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Second card -->
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/prof-mentorship.jpg" alt="Professor Mentorship">
-                                    </div>
-                                    <div class="lab-text">
-                                        <h5>Exceptional Mentorship</h5>
-                                        <p>The lab is co-managed by Professor Harish PM and Professor Madhu Vadali, creating a diverse research environment that spans multiple areas of robotics. Professor Harish focuses on manipulation and control systems, while Professor Madhu Vadali specializes in soft robotics. Their complementary expertise and supportive guidance have been instrumental in my growth as a researcher, providing me with a well-rounded understanding of robotics principles.</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Third card -->
-                                <div class="lab-item">
-                                    <div class="lab-image">
-                                        <img src="images/addverb-visit.jpg" alt="
-                                    transition: all 0.3s ease;
-                                    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
                                 }
                                 
                                 .video-link:hover {
@@ -1952,7 +1804,14 @@
                                         <div class="finding-icon"><i class="fas fa-bullseye"></i></div>
                                         <div class="finding-content">
                                             <h6>Stiffness Ellipses</h6>
-                                            <p>Known force ellipses were larger and more directionally aligned with task axis, while unknown force ellipses were more circular</p>
+                                            <p>Human arm exhibited natural asymmetry in stiffness, with higher stiffness in the dominant arm</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-bezier-curve"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Tension Distribution</h6>
+                                            <p>Eta vector analysis revealed regions where all cables maintain positive tension for stable control</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1960,7 +1819,136 @@
                             
                             <div class="conclusion-section">
                                 <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
-                                <p>This research provides valuable insights for designing more intuitive and adaptive human-robot interaction systems. Understanding how humans naturally modulate arm impedance based on force knowledge can inform the development of collaborative robots that better complement human motor control strategies. The findings suggest that providing force feedback in robotic systems could significantly enhance task performance and stability, particularly for precision tasks requiring directional specificity.</p>
+                                <p>This research has significant implications for rehabilitation robotics, where cable-driven systems can provide controlled assistance over larger and more stable workspaces than human capabilities alone. The findings suggest that cable-driven manipulators with higher redundancy offer enhanced control precision and stability, potentially benefiting rehabilitation practices. However, careful regulation of motion range remains crucial for safe human-robot interaction in practical applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-category" id="workspace-analysis" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Robot-Assisted Human Limb Workspace Analysis</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Robot-Assisted Human Limb Workspace Analysis</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> MTech, 2nd semester</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Robotics</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Comparative analysis of cable-driven manipulators with human arm workspace, demonstrating enhanced reach capabilities and stability with increased cable redundancy for rehabilitation applications.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project analyzes the workspace of a two-link planar manipulator actuated by cables, modeling an upper-extremity human limb. The study evaluates the reachable zone of the limb's end-point under different cable redundancy conditions and compares it with anatomically constrained human arm workspace.</p>
+                            
+                            <div class="project-actions">
+                                <a href="images/Limb_ws with m= n+1.py" class="btn primary" target="_blank">
+                                    <i class="fas fa-code"></i> View Code (m=n+1)
+                                </a>
+                                <a href="images/Limb_ws with m=n+2.py" class="btn secondary" target="_blank">
+                                    <i class="fas fa-code"></i> View Code (m=n+2)
+                                </a>
+                                <a href="images/Activity 4 HRI.pdf" class="btn primary" target="_blank">
+                                    <i class="fas fa-file-pdf"></i> View Project Report
+                                </a>
+                            </div>
+                            
+                            <!-- Add two images in a row -->
+                            <div class="project-images">
+                                <div class="image-collage image-collage-2">
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="50">
+                                        <img src="images/2R MAnipulator with 3 cables.jpg" alt="Workspace with m=n+1">
+                                        <div class="image-caption">Workspace with 3 Cables (m=n+1)</div>
+                                    </div>
+                                    <div class="project-image" data-aos="fade-up" data-aos-delay="100">
+                                        <img src="images/2R MAnipulator with 4 cables.jpg" alt="Workspace with m=n+2">
+                                        <div class="image-caption">Workspace with 4 Cables (m=n+2)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Methodology</h5>
+                                <div class="methodology-content">
+                                    <p>The project involved a systematic approach to modeling and analyzing cable-driven manipulators in comparison with human arm workspace limitations.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Mathematical Formulation</h6>
+                                                <p>Derived kinematic equations for the 2-link manipulator and defined cable attachment points</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Structural Matrix</h6>
+                                                <p>Formulated generalized structural matrices for 3-cable (m=n+1) and 4-cable (m=n+2) systems</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Eta Vector Computation</h6>
+                                                <p>Calculated null space vectors to identify feasible joint configurations where cables maintain tension</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Workspace Mapping</h6>
+                                                <p>Mapped feasible joint configurations to task space and compared with human arm model</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Findings</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Enhanced Workspace</h6>
+                                            <p>Cable-driven manipulators demonstrated broader range of motion than anatomically constrained human arm</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-balance-scale"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Redundancy Benefits</h6>
+                                            <p>4-cable system (m=n+2) showed improved stability and more uniform workspace distribution</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-hand-paper"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Workspace Asymmetry</h6>
+                                            <p>Human arm workspace exhibited natural asymmetry due to physiological constraints</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-bezier-curve"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Tension Distribution</h6>
+                                            <p>Eta vector analysis revealed regions where all cables maintain positive tension for stable control</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This research has significant implications for rehabilitation robotics, where cable-driven systems can provide controlled assistance over larger and more stable workspaces than human capabilities alone. The findings suggest that cable-driven manipulators with higher redundancy offer enhanced control precision and stability, potentially benefiting rehabilitation practices. However, careful regulation of motion range remains crucial for safe human-robot interaction in practical applications.</p>
                             </div>
                         </div>
                     </div>
@@ -1995,8 +1983,6 @@
                                 </a>
                             </div>
                             
-                           
-                            
                             <div class="methodology-section">
                                 <h5><i class="fas fa-cogs"></i> Methodology</h5>
                                 <div class="methodology-content">
@@ -2006,29 +1992,36 @@
                                         <div class="step">
                                             <div class="step-number">01</div>
                                             <div class="step-content">
-                                                <h6>Model Selection</h6>
-                                                <p>Used MobL_ARMS model with 7 degrees of freedom and muscle-tendon actuators</p>
+                                                <h6>Data Collection</h6>
+                                                <p>Captured motion data from subjects performing overhead press exercises with varying loads</p>
                                             </div>
                                         </div>
                                         <div class="step">
                                             <div class="step-number">02</div>
                                             <div class="step-content">
-                                                <h6>Data Collection</h6>
-                                                <p>Captured motion using Vicon Nexus system with 10 reflective markers</p>
+                                                <h6>Model Scaling</h6>
+                                                <p>Adapted generic musculoskeletal models to match subject-specific anthropometry</p>
                                             </div>
                                         </div>
                                         <div class="step">
                                             <div class="step-number">03</div>
                                             <div class="step-content">
-                                                <h6>Inverse Analyses</h6>
-                                                <p>Performed Inverse Kinematics and Inverse Dynamics to calculate joint angles and forces</p>
+                                                <h6>Inverse Kinematics</h6>
+                                                <p>Calculated joint angles throughout the movement trajectory</p>
                                             </div>
                                         </div>
                                         <div class="step">
                                             <div class="step-number">04</div>
                                             <div class="step-content">
-                                                <h6>Muscle Force Estimation</h6>
-                                                <p>Used Static Optimization to estimate individual muscle forces</p>
+                                                <h6>Inverse Dynamics</h6>
+                                                <p>Computed joint moments and forces required to produce the observed motion</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">05</div>
+                                            <div class="step-content">
+                                                <h6>Muscle Analysis</h6>
+                                                <p>Estimated individual muscle contributions and activation patterns</p>
                                             </div>
                                         </div>
                                     </div>
@@ -2039,24 +2032,31 @@
                                 <h5><i class="fas fa-chart-line"></i> Key Findings</h5>
                                 <div class="findings-grid">
                                     <div class="finding-item">
-                                        <div class="finding-icon"><i class="fas fa-angle-double-up"></i></div>
+                                        <div class="finding-icon"><i class="fas fa-weight"></i></div>
                                         <div class="finding-content">
-                                            <h6>Deltoid Muscles</h6>
-                                            <p>DELT1 (anterior) showed a large initial peak (~750 N) for initiating the lift and a second increase (~350 N) during lowering. DELT2 (middle) had sustained activation, peaking around 220 N, supporting abduction throughout.</p>
+                                            <h6>Load Distribution</h6>
+                                            <p>Deltoid and trapezius muscles showed highest activation during the concentric phase</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-exchange-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Joint Coordination</h6>
+                                            <p>Synchronized shoulder and elbow movement patterns optimized force generation</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Compensatory Mechanisms</h6>
+                                            <p>Increased trunk extension observed with heavier loads to maintain stability</p>
                                         </div>
                                     </div>
                                     <div class="finding-item">
                                         <div class="finding-icon"><i class="fas fa-bolt"></i></div>
                                         <div class="finding-content">
-                                            <h6>Triceps Muscles</h6>
-                                            <p>TRIlong (long head) was the dominant elbow extensor, peaking around 360 N during the extension phase. TRImed (medial) and TRIlat (lateral) showed significantly lower peaks (~30-40 N), assisting the long head.</p>
-                                        </div>
-                                    </div>
-                                    <div class="finding-item">
-                                        <div class="finding-icon"><i class="fas fa-arrows-alt-v"></i></div>
-                                        <div class="finding-content">
-                                            <h6>Latissimus Dorsi</h6>
-                                            <p>This muscle group contributed to postural control and stabilization, particularly during the lowering phase. Peak forces were generally lower than primary movers, with LAT1 peaking around 50 N.</p>
+                                            <h6>Energy Transfer</h6>
+                                            <p>Efficient energy transfer between joints reduced overall metabolic cost</p>
                                         </div>
                                     </div>
                                 </div>
@@ -2069,11 +2069,597 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <!-- First: Cartesian Impedance Control -->
+                <div class="project-category" id="cartesian-impedance" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Cartesian Impedance Control on HEAL</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Cartesian Impedance Control for Robot Manipulation</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> Research Project</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Human-Robot Interaction</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Implementation of a Cartesian impedance controller that enables compliant human-robot collaborative manipulation, allowing a robot to adaptively assist humans in lifting and placing tasks.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project implements a Cartesian Impedance Controller for a robotic manipulator collaboratively lifting and placing a box with a human partner. The robot operates in task space (Cartesian space) and exhibits compliant, human-friendly behavior.</p>
+                            
+                            <div class="project-actions">
+                                <a href="https://github.com/Samriddhi-dubey06/Cartesian_Impedanec_Control_on_heal_with_trajectory-generation" class="btn primary" target="_blank">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                            
+                            <!-- Video demonstration -->
+                            <div class="centered-content">
+                                <h5><i class="fas fa-play-circle"></i> Project Demo</h5>
+                                <div class="project-video-container">
+                                    <video src="images/Cart_imp_heal.mp4" controls class="project-video">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="video-caption">Cartesian Impedance Control Demonstration</div>
+                                </div>
+                            </div>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Core Concept & Implementation</h5>
+                                <div class="methodology-content">
+                                    <p>The end-effector is modeled as a mass-spring-damper system in 3D space, allowing the robot to follow smooth position and orientation trajectories while adapting compliantly to external forces — ideal for human-robot interaction tasks.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Kinematics Handling (via KDL)</h6>
+                                                <p>Computes forward kinematics for pose tracking, Jacobian for mapping Cartesian forces to joint torques, and updates pose and velocity in real-time</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Trajectory Generation</h6>
+                                                <p>Uses quintic polynomial interpolation for position and SLERP for orientation, ensuring smooth acceleration/deceleration with zero start/end velocity</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Execution Flow</h6>
+                                                <p>Sequences through initialize, lift, and place poses with a 15-second interpolation per pose, maintaining final position with impedance control</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Control Loop</h6>
+                                                <p>Runs at 500 Hz, continuously computing Cartesian errors and applying impedance torques via Jacobian transpose</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Features</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-hands-helping"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Human-Robot Collaboration</h6>
+                                            <p>Enables safe and compliant co-manipulation with a human lifting the other side of the box</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-bezier-curve"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Smooth Trajectories</h6>
+                                            <p>Quintic polynomial interpolation ensures jerk-free motion with p(t) = a₀ + a₁t + a₂t² + a₃t³ + a₄t⁴ + a₅t⁵</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-sync-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Adaptive Response</h6>
+                                            <p>Automatically adjusts to external disturbances or human corrections during the task</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-shield-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Safety Features</h6>
+                                            <p>Avoids excessive joint forces through natural impedance-based compliance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This Cartesian impedance control strategy demonstrates significant potential for collaborative robotics applications, particularly in manufacturing, logistics, and assistive scenarios. The controller's ability to maintain precise positioning while adapting to human input makes it ideal for co-manipulation tasks, physical human-robot interaction (pHRI), and assistive lifting operations. The implementation provides a foundation for developing more sophisticated collaborative behaviors that can enhance productivity and safety in human-robot workspaces.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Second: Joint Impedance Control -->
+                <div class="project-category" id="joint-impedance" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Joint Impedance Control on HEAL</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Joint Impedance Control for Robot Manipulation</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> Research Project</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Robot Control</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-cog"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Implementation of a joint-space impedance controller with velocity-based trajectory planning that ensures compliant, smooth, and velocity-safe motion for robotic manipulation tasks.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project implements joint-space impedance control with PID gains and quintic trajectory generation for the Heal Robot. The controller computes joint torques based on position, velocity, and integral errors, ensuring compliant and smooth motion. The implementation supports effort (torque) control, is designed for ROS, and integrates trajectory planning based on maximum time and velocity.</p>
+                            
+                            <div class="project-actions">
+                                <a href="https://github.com/Samriddhi-dubey06/Joint_Impedance_Control_on_Heal" class="btn primary" target="_blank">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Core Components & Implementation</h5>
+                                <div class="methodology-content">
+                                    <p>The controller uses a PID torque control structure enhanced with impedance behavior, combined with velocity-based trajectory planning for safe and efficient motion.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>PID Control Parameters</h6>
+                                                <p>Carefully tuned gains (Kp: [148, 140, 130, 120, 115, 130], Kd: [57, 52, 45, 50, 40, 45], Ki: [65, 60, 60, 60, 55, 60]) for optimal performance across all joints</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Control Law</h6>
+                                                <p>Computes torque as τ = Kp × e_pos + Kd × e_vel + Ki × ∫ e_pos dt with integral clamping to prevent windup</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Velocity-Based Planning</h6>
+                                                <p>Calculates trajectory duration based on joint distances and maximum allowable velocities, ensuring no joint exceeds its speed limit</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Quintic Trajectory</h6>
+                                                <p>Generates smooth paths using 5th-order polynomials: q(t) = a₀ + a₁t + a₂t² + a₃t³ + a₄t⁴ + a₅t⁵ with zero initial/final velocities and accelerations</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Features</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Dynamic Duration</h6>
+                                            <p>Computes trajectory time based on per-joint distance and maximum velocity constraints</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-wave-square"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Smooth Motion</h6>
+                                            <p>Quintic polynomial ensures jerk-free transitions with continuous acceleration profiles</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-shield-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Safety Features</h6>
+                                            <p>Enforces velocity limits and implements anti-windup strategy for integral term</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-sync-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>High Responsiveness</h6>
+                                            <p>Control loop runs at 500 Hz with target-aware tracking and termination on convergence</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This joint impedance control implementation provides a robust foundation for precise and compliant robot manipulation tasks. The velocity-based trajectory planning approach ensures safe operation while maintaining optimal performance. The system is particularly valuable for applications requiring careful motion control, such as assembly tasks, human-robot collaboration, and manipulation in constrained environments. The controller's ability to balance between position accuracy and compliance makes it suitable for a wide range of robotic applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Third: Admittance Control -->
+                <div class="project-category" id="admittance-control" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Admittance Control on HEAL</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Admittance Control on 6-DOF Heal Robot</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> Research Project</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Robotics</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-hand-paper"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Implementation of an admittance control strategy using force-torque sensor feedback to enable intuitive physical human-robot interaction, allowing the robot to respond naturally to applied forces.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project implements admittance control on a custom 6-DOF Heal robot with a biaxial FUTEK force-torque (FT) sensor mounted on the end-effector. The sensor measures forces in the X and Y directions, which are then used to command motion through an admittance control strategy in Cartesian space.</p>
+                            
+                            <div class="project-actions">
+                                <a href="https://github.com/Samriddhi-dubey06/Admittance_control_on_heal" class="btn primary" target="_blank">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                            
+                            <!-- Centered image with reduced size -->
+                            <div class="centered-content">
+                                <img src="images/FT sesor mounted on heal.jpg" alt="FT Sensor Mounted on HEAL Robot" class="centered-small-image">
+                                <div class="image-caption">Force-Torque Sensor Mounted on HEAL Robot's End-Effector</div>
+                            </div>
+                            
+                            <!-- Video demonstration -->
+                            <div class="centered-content">
+                                <h5><i class="fas fa-play-circle"></i> Project Demo</h5>
+                                <div class="project-video-container">
+                                    <video src="images/Admittance in xy plane.mp4" controls class="project-video">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="video-caption">Admittance Control in XY Plane Demonstration</div>
+                                </div>
+                            </div>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> System Dynamics & Implementation</h5>
+                                <div class="methodology-content">
+                                    <p>The admittance control strategy maps measured forces to robot motion using a quasi-static approximation of the system dynamics.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Dynamic Equation</h6>
+                                                <p>Based on the fundamental equation: M·Δẍ + Kd·Δẋ + he = h, where M is the mass matrix, Kd is the damping matrix, he is the end-effector wrench, and h is the desired wrench</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Quasi-Static Approximation</h6>
+                                                <p>Neglects inertial effects to derive the control law: ẋr = ẋd + Kd⁻¹(he - h), mapping measured forces to reference velocities</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Jacobian Mapping</h6>
+                                                <p>Uses the robot Jacobian to convert Cartesian velocities to joint velocities: q̇r = q̇d + J⁻¹[Kd⁻¹(he - h)]</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Sensor Integration</h6>
+                                                <p>Processes real-time force measurements from the biaxial FUTEK FT sensor to enable responsive control in both X and Y directions</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Features</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-arrows-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Multi-Directional Control</h6>
+                                            <p>Supports both 1D (Y-axis only) and 2D (X-Y plane) admittance control modes</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-exchange-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Force-to-Velocity Mapping</h6>
+                                            <p>Direct mapping of measured forces to Cartesian velocities with tunable damping parameters</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-hand-holding"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Intuitive Interaction</h6>
+                                            <p>Enables natural physical guidance of the robot through direct hand contact</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-sliders-h"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Adjustable Compliance</h6>
+                                            <p>Tunable damping values allow for customizing the robot's responsiveness to applied forces</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This admittance control implementation enables intuitive physical human-robot interaction, making it valuable for collaborative tasks, teaching by demonstration, and assistive applications. The system allows users to guide the robot naturally by applying forces directly to the end-effector, creating a more accessible interface for non-expert users. This approach has significant potential in manufacturing, healthcare, and service robotics where direct physical interaction between humans and robots is beneficial.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fourth: Object Admittance Control -->
+                <div class="project-category" id="object-admittance" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Object Admittance Control for Dual-Arm Robot</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Object Admittance Control for Dual-Arm Robot in MuJoCo</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> Research Project</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Advanced Robotics Control</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Implementation of object-level admittance control for coordinated dual-arm manipulation, enabling compliant and adaptive object handling in response to external forces.</p>
+                                </div>
+                            </div>
+                            
+                            <p>This project implements object admittance control for a dual-arm robotic system in a MuJoCo simulation. The robot collaboratively lifts an object (like a box) using sensor feedback, dynamic control, and intelligent coordination between both arms.</p>
+                            
+                            <div class="project-actions">
+                                <a href="https://github.com/Samriddhi-dubey06/object_admittance_on_heal_mujoco" class="btn primary" target="_blank">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                            
+                            <!-- Video demonstration -->
+                            <div class="centered-content">
+                                <h5><i class="fas fa-play-circle"></i> Project Demo</h5>
+                                <a href="https://youtu.be/-an-89Gh3lk?feature=shared" target="_blank" class="video-link">
+                                    <i class="fab fa-youtube"></i> Watch Object Admittance Control Demo on YouTube
+                                </a>
+                            </div>
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Core Concepts & Implementation</h5>
+                                <div class="methodology-content">
+                                    <p>The object admittance control strategy enables compliant interaction with the environment by responding to external forces detected through both robot arms.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Admittance Control Equation</h6>
+                                                <p>Based on the equation: ẋₒ* = ẋₒ + D⁻¹(W - W* - K(xₒ* - xₒ)), where D is the damping matrix, K is the stiffness matrix, and W represents the sensed wrench</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>Contact Wrench Detection</h6>
+                                                <p>Detects contact between robot and box, extracting forces & torques (wrenches) from both arms for feedback control</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Velocity Mapping</h6>
+                                                <p>Converts Cartesian object velocity to joint velocity using Jacobians of both arms with safety velocity limits</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Control State Machine</h6>
+                                                <p>Manages transitions between reaching, grasping, lifting, and maintaining states based on robot progress and sensor feedback</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Features</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-hands-helping"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Dual-Arm Coordination</h6>
+                                            <p>Combines control of two robot arms to stably grasp and move objects with coordinated motion</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-feather-alt"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Force-Based Lifting</h6>
+                                            <p>Adjusts lifting motion based on sensed wrenches from both arms for adaptive object handling</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-undo"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Fallback Logic</h6>
+                                            <p>Implements intelligent recovery strategies when contact is lost or force thresholds are not met</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-cubes"></i></div>
+                                        <div class="finding-content">
+                                            <h6>MuJoCo Simulation</h6>
+                                            <p>Leverages accurate physics-based simulation for realistic testing of control algorithms</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Impact</h5>
+                                <p>This object admittance control implementation demonstrates significant potential for collaborative robotic manipulation tasks. By enabling compliant and adaptive object handling, the system can be applied to various scenarios including manufacturing assembly, logistics, healthcare assistance, and household tasks. The dual-arm coordination with force feedback creates more robust manipulation capabilities that can adapt to object variations and environmental uncertainties, advancing the field of physical human-robot interaction and collaborative robotics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fifth: 2R Impedance Control -->
+                <div class="project-category" id="impedance-2r" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">Impedance Control on 2R Manipulator</h3>
+                    
+                    <div class="project-card enhanced">
+                        <div class="project-header">
+                            <h4 class="project-title">Impedance Control Implementation on 2R Manipulator</h4>
+                            <div class="project-meta">
+                                <span><i class="fas fa-calendar-alt"></i> Research Project</span>
+                                <span><i class="fas fa-user"></i> IIT Gandhinagar</span>
+                                <span><i class="fas fa-code-branch"></i> Robot Control</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-content">
+                            <div class="project-highlight-box">
+                                <div class="highlight-icon"><i class="fas fa-robot"></i></div>
+                                <div class="highlight-content">
+                                    <h5>Key Innovation</h5>
+                                    <p>Implementation of progressive control strategies from basic gravity compensation to full impedance control on a 2R manipulator, enabling compliant and adaptive interaction with the environment.</p>
+                                </div>
+                            </div>
+                            
+                            <p>In our 2R manipulator simulation using MuJoCo, we implemented and explored various control strategies to achieve stable and responsive joint behavior. The project demonstrates the evolution of control approaches from basic compensation to interactive impedance control.</p>
+                            
+                            <div class="project-actions">
+                                <a href="https://github.com/Samriddhi-dubey06/Samriddhi-D_2R_Manipulator_Impedance-Control" class="btn primary" target="_blank">
+                                    <i class="fab fa-github"></i> View on GitHub
+                                </a>
+                            </div>
+                            
+                           
+                            
+                            <div class="methodology-section">
+                                <h5><i class="fas fa-cogs"></i> Control Strategies</h5>
+                                <div class="methodology-content">
+                                    <p>Our research explored a progression of control approaches, starting with basic gravity compensation and advancing toward full impedance control for interactive tasks.</p>
+                                    
+                                    <div class="methodology-steps">
+                                        <div class="step">
+                                            <div class="step-number">01</div>
+                                            <div class="step-content">
+                                                <h6>Gravity Compensation</h6>
+                                                <p>Calculated and applied torques at each joint to counteract gravity effects, enabling the manipulator to maintain static configurations without collapsing</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">02</div>
+                                            <div class="step-content">
+                                                <h6>PD Control</h6>
+                                                <p>Implemented Proportional-Derivative control with desired joint positions, computing control torques based on position and velocity errors</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">03</div>
+                                            <div class="step-content">
+                                                <h6>Impedance Control</h6>
+                                                <p>Combined gravity compensation and PD control to emulate a mass-spring-damper system, allowing compliant response to external forces</p>
+                                            </div>
+                                        </div>
+                                        <div class="step">
+                                            <div class="step-number">04</div>
+                                            <div class="step-content">
+                                                <h6>Simulation Testing</h6>
+                                                <p>Validated control strategies in MuJoCo environment with various initial conditions and external disturbances</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h5><i class="fas fa-chart-line"></i> Key Findings</h5>
+                                <div class="findings-grid">
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-weight-hanging"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Static Stability</h6>
+                                            <p>Gravity compensation successfully maintained static configurations (e.g., 45° and 60° for joints 1 and 2) without collapsing</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-bullseye"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Dynamic Response</h6>
+                                            <p>PD control enabled smooth convergence to target configurations from arbitrary initial states</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-hand-paper"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Compliance Benefits</h6>
+                                            <p>Impedance control framework demonstrated potential for human-robot interaction and adaptive object manipulation</p>
+                                        </div>
+                                    </div>
+                                    <div class="finding-item">
+                                        <div class="finding-icon"><i class="fas fa-project-diagram"></i></div>
+                                        <div class="finding-content">
+                                            <h6>Framework Extensibility</h6>
+                                            <p>The simulation provides a foundation for integrating advanced behaviors like surface contact maintenance and constrained path following</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="conclusion-section">
+                                <h5><i class="fas fa-flag-checkered"></i> Applications & Future Work</h5>
+                                <p>This research establishes a foundation for more advanced robot control applications. In future extensions, impedance control will allow the 2R arm to maintain contact with surfaces, guide objects along constrained paths, or adaptively respond to perturbations rather than rigidly fighting against them. The framework developed here serves as a stepping stone toward more sophisticated human-robot interaction scenarios and compliant manipulation tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
 
-    <style>
+   <style>
         .projects-section {
             padding: var(--section-padding);
             background-color: var(--dark);
@@ -2795,6 +3381,131 @@
             background: rgba(255, 215, 0, 0.15);
             color: #ffd700;
             padding: 1rem 1.5rem;
+        }
+    </style>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // Mobile menu toggle
+        let mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        let navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                if (navLinks.classList.contains('active')) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                } else {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        }
+        
+        // Header scroll effect
+        let header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#0071e3'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#0071e3',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                       
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
@@ -2890,6 +3601,100 @@
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#0071e3'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#0071e3',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
